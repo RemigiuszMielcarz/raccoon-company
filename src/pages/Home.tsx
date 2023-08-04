@@ -33,7 +33,7 @@ const Home: FunctionComponent = () => {
         <img
           className="max-h-[600px] overflow-hidden object-contain z-[1]"
           alt=""
-          src="/frame@2x.png"
+          src="/hacker.png"
         />
       </section>
       <section className="bg-red pt-16 pb-[200px] gap-[16px] mt-[-70px]">
@@ -70,7 +70,7 @@ const Home: FunctionComponent = () => {
           <p className="m-0">Rozwój i automatyzacja</p>
           <p className="m-0 text-red">{`e-commerce `}</p>
         </div>
-        <img className="relative h-12" alt="" src="/group-5.svg" />
+        <img className="relative h-12" alt="" src="/carousel.svg" />
         <div className="container flex flex-col items-center tracking-[0.3px] gap-5 leading-[25px] font-lato">
           <div className="max-w-[600px]">
             <p className="[margin-block-start:0] [margin-block-end:16px]">
@@ -157,7 +157,7 @@ const Home: FunctionComponent = () => {
           <img
             className="relative w-[360px] h-[328px] object-cover"
             alt=""
-            src="/contact@2x.png"
+            src="/dobaContact.png"
           />
         </div>
         <div className="flex flex-col items-center justify-end text-gray">
@@ -194,7 +194,7 @@ const Home: FunctionComponent = () => {
               autoFocus
             >
               <div className="flex items-center justify-center rounded bg-gray w-10 h-10">
-                <img className="w-[22px] h-5" alt="" src="/shape1.svg" />
+                <img className="w-[22px] h-5" alt="" src="/sendArrow.svg" />
               </div>
             </button>
           </div>
