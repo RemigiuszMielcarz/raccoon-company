@@ -1,14 +1,16 @@
+import { useEffect } from "react";
 import {
   Routes,
   Route,
   useNavigationType,
   useLocation,
 } from "react-router-dom";
+import Nav from "./components/Nav";
 import Home from "./pages/Home";
-import Contact from "./pages/Contact";
-import Projects from "./pages/Projects";
 import AboutUs from "./pages/AboutUs";
-import { useEffect } from "react";
+import Projects from "./pages/Projects";
+import Contact from "./pages/Contact";
+import Footer from "./components/Footer";
 
 function App() {
   const action = useNavigationType();
@@ -50,7 +52,7 @@ function App() {
 
     if (metaDescription) {
       const metaDescriptionTag: HTMLMetaElement | null = document.querySelector(
-        'head > meta[name="description"]'
+        'head > meta[name="description"]',
       );
       if (metaDescriptionTag) {
         metaDescriptionTag.content = metaDescription;
@@ -59,12 +61,15 @@ function App() {
   }, [pathname]);
 
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/projects" element={<Projects />} />
-      <Route path="/about-us" element={<AboutUs />} />
-    </Routes>
+    <Nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/about-us" element={<AboutUs />} />
+      </Routes>
+      <Footer />
+    </Nav>
   );
 }
 export default App;

@@ -3,11 +3,61 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body {
-  @apply leading-[normal] m-0;
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-wide;
+    font-weight: 400;
+  }
+
+  h1 span,
+  h2 span,
+  h3 span,
+  h4 span,
+  h5 span,
+  h6 span {
+    font-weight: 800;
+  }
+
+  a {
+    @apply underline cursor-pointer;
+  }
+
+  p,
+  span,
+  a {
+    @apply tracking-tight;
+  }
 }
-*,
-::before,
-::after {
-  border-width: 0;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  background-color: #0d0d0d;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+.ReactCollapse--collapse {
+  transition: height 500ms;
 }
