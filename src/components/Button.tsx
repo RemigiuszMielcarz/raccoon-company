@@ -1,4 +1,4 @@
-import { FunctionComponent, useCallback } from "react";
+import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 type ButtonType = {
@@ -7,7 +7,7 @@ type ButtonType = {
   variant: "red" | "outline";
 };
 
-const Button: FunctionComponent<ButtonType> = ({ text, route, variant }) => {
+const Button: React.FC<ButtonType> = ({ text, route, variant }) => {
   const navigate = useNavigate();
 
   const onFrameClick = useCallback(() => {
@@ -16,8 +16,8 @@ const Button: FunctionComponent<ButtonType> = ({ text, route, variant }) => {
 
   const buttonClass =
     variant === "red"
-      ? "flex-1 text-link p-2 [border:none] bg-red rounded h-10 overflow-hidden flex flex-col items-center justify-center"
-      : "flex-1 text-link p-2 border-2 border-red bg-black rounded h-10 overflow-hidden flex flex-col items-center justify-center";
+      ? "w-[full] text-link p-2 [border:none] bg-red rounded h-10 overflow-hidden flex flex-col items-center justify-center"
+      : "w-[full] text-link p-2 border-2 border-red bg-body rounded h-10 overflow-hidden flex flex-col items-center justify-center";
 
   return (
     <button className={buttonClass} autoFocus onClick={onFrameClick}>

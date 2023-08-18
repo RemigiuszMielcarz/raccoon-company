@@ -20,8 +20,7 @@ const tailwindTheme = {
         "3xl": "1600px",
       },
       colors: {
-        gray: "#0d0d0d",
-        white: "#fff",
+        body: "#0d0d0d",
         red: "#f20505",
         whitesmoke: "#f2f2f2",
       },
