@@ -51,3 +51,14 @@ export const socialMedia = [
     route: "https://www.linkedin.com",
   },
 ];
+
+export const resources = [
+  {
+    name: "Polityka Prywatności",
+    route: "/copyrights",
+  },
+  {
+    name: "Regulamin",
+    route: "/regulations",
+  },
+];
