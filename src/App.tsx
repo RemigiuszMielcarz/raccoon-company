@@ -5,12 +5,11 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
-import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
-import Footer from "./components/Footer";
+import Layout from "./components/layout";
 
 function App() {
   const action = useNavigationType();
@@ -61,15 +60,14 @@ function App() {
   }, [pathname]);
 
   return (
-    <Nav>
+    <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/about-us" element={<AboutUs />} />
       </Routes>
-      <Footer />
-    </Nav>
+    </Layout>
   );
 }
 export default App;
