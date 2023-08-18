@@ -9,6 +9,14 @@ const Nav = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
+  const handleOpenDropdown = (name: string) => {
+    setOpenDropdown(name);
+  };
+
+  const handleCloseDropdown = () => {
+    setOpenDropdown(null);
+  };
+
   useEffect(() => {
     const checkScreenSize = () => {
       const isXlScreen = window.matchMedia("(min-width: 1280px)").matches;
@@ -23,19 +31,16 @@ const Nav = () => {
   }, []);
 
   const toggleMobileMenu = () => setIsMobileOpen(!isMobileOpen);
-  const toggleDropdown = (title: string) => {
-    if (openDropdown === title) {
-      setOpenDropdown(null);
-    } else {
-      setOpenDropdown(title);
-    }
-  };
 
   return (
     <div>
       <nav className="bg-secondary h-[60px] lg:h-[90px] flex">
         <div className="container font-semibold flex justify-center gap-5 text-sm">
-          <img src="/icons/logo5.svg" alt="Logo" width={300} />
+          <img
+            src="/icons/logo5.svg"
+            alt="Logo"
+            className="max-w-[170px] lg:max-w-[300px]"
+          />
 
           <div className="hidden xl:flex gap-[30px] items-center font-syne">
             {navRoutes.map((route, index) =>
@@ -45,7 +50,8 @@ const Nav = () => {
                   title={route.name}
                   data={route.subRoutes}
                   isOpen={openDropdown === route.name}
-                  onToggle={() => toggleDropdown(route.name)}
+                  onOpen={() => handleOpenDropdown(route.name)}
+                  onClose={handleCloseDropdown}
                 />
               ) : (
                 <Link

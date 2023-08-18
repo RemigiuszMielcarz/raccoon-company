@@ -10,25 +10,26 @@ interface DropdownItemProps {
   title: string;
   data: Service[];
   isOpen: boolean;
-  onToggle: () => void;
+  onOpen: () => void;
+  onClose: () => void;
 }
 
 const DropdownItem: React.FC<DropdownItemProps> = ({
   title,
   data,
   isOpen,
-  onToggle,
+  onOpen,
+  onClose,
 }) => {
   return (
     <div
+      onMouseEnter={onOpen}
+      onMouseLeave={onClose}
       className={`relative flex h-full items-center px-[20px] ${
         isOpen ? "bg-red" : ""
       }`}
     >
-      <div
-        className="flex gap-[10px] cursor-pointer text-whitesmoke"
-        onClick={onToggle}
-      >
+      <div className="flex gap-[10px] cursor-pointer text-whitesmoke">
         <span className={`${isOpen ? "text-white" : "text-white"}`}>
           {title}
         </span>
