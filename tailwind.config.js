@@ -23,6 +23,7 @@ const tailwindTheme = {
         body: "#0d0d0d",
         red: "#f20505",
         whitesmoke: "#f2f2f2",
+        display: "#0d3443",
       },
       fontFamily: {
         lato: "Lato",

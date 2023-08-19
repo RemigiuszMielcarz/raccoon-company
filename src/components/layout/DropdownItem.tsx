@@ -25,20 +25,24 @@ const DropdownItem: React.FC<DropdownItemProps> = ({
     <div
       onMouseEnter={onOpen}
       onMouseLeave={onClose}
-      className={`relative flex h-full items-center px-[20px] ${
-        isOpen ? "bg-red" : ""
-      }`}
+      className="relative flex h-full items-center px-[20px]"
     >
       <div className="flex gap-[10px] cursor-pointer text-white hover:text-whitesmoke font-bold text-sm">
         <span>{title}</span>
       </div>
-      <div className={isOpen ? "absolute left-0 top-[99%] bg-red" : "hidden"}>
-        <div className="grid grid-cols-4 w-max whitespace-nowrap gap-[10px] p-[20px]">
+      <div
+        className={
+          isOpen
+            ? "absolute w-max left-[-190px] top-[99%] bg-white border-0 rounded-3xl"
+            : "hidden"
+        }
+      >
+        <div className="grid grid-cols-4 whitespace-nowrap gap-[30px] p-[20px]">
           {data.map((item: Service, index: number) => (
             <Link
               to={item.route}
               key={index}
-              className="text-white hover:text-whitesmoke"
+              className="text-black hover:text-whitesmoke"
             >
               {item.name}
             </Link>
