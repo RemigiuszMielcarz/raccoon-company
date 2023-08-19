@@ -2,6 +2,7 @@ import React from "react";
 
 import Footer from "./Footer";
 import Nav from "./Nav";
+import ScrollToTopButton from "../ScrollToTopButton";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -16,6 +17,7 @@ const Layout = ({ children }: LayoutProps) => {
       <div className={`w-full h-full ${isBlur ? "blur-[5px]" : ""}`}>
         {children}
       </div>
+      <ScrollToTopButton />
       <Footer />
     </>
   );
