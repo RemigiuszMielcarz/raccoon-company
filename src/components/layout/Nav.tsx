@@ -34,11 +34,13 @@ const Nav = () => {
 
   return (
     <nav className="container bg-secondary h-[60px] lg:h-[90px] flex justify-between font-syne">
-      <img
-        src="/icons/logo5.svg"
-        alt="Logo"
-        className="max-w-[200px] lg:max-w-[300px]"
-      />
+      <Link to="/home" className="flex items-center">
+        <img
+          src="/icons/logo5.svg"
+          alt="Logo"
+          className="min-w-[200px] sm:w-[300px] 2xl:w-[400px]"
+        />
+      </Link>
       <div className="hidden xl:flex gap-[30px] items-center">
         {navRoutes.map((route, index) =>
           route.subRoutes ? (

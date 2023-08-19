@@ -29,7 +29,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({ title, items }) => {
 const Footer: React.FC = () => {
   return (
     <footer className="container flex flex-col text-whitesmoke font-syne py-16">
-      <div className="flex flex-col lg:flex-row lg:mb-[60px] lg:gap-[20px] lg:justify-center">
+      <div className="flex flex-col lg:flex-row lg:mb-[60px] lg:gap-[20px] lg:justify-between">
         <div className="flex flex-col lg:max-w-xs gap-[16px] mb-[50px] lg:mb-0">
           <img src="/icons/logo6.svg" alt="RaccoonLogo" />
           <p>
@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
             przerwałeś.
           </p>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-[12px] gap-y-[48px] mb-[60px] lg:mb-0 w-max">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-[12px] xl:gap-16 gap-y-[48px] mb-[60px] lg:mb-0 w-max">
           <FooterSection title="Usługi" items={services} />
           <FooterSection title="Firma" items={navRoutes} />
           <FooterSection title="Zasoby" items={resources} />
