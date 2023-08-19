@@ -33,70 +33,67 @@ const Nav = () => {
   const toggleMobileMenu = () => setIsMobileOpen(!isMobileOpen);
 
   return (
-    <div>
-      <nav className="bg-secondary h-[60px] lg:h-[90px] flex">
-        <div className="container font-semibold flex justify-center gap-5 text-sm">
-          <img
-            src="/icons/logo5.svg"
-            alt="Logo"
-            className="max-w-[170px] lg:max-w-[300px]"
-          />
+    <nav className="container bg-secondary h-[60px] lg:h-[90px] flex justify-between font-syne">
+      <img
+        src="/icons/logo5.svg"
+        alt="Logo"
+        className="max-w-[200px] lg:max-w-[300px]"
+      />
+      <div className="hidden xl:flex gap-[30px] items-center">
+        {navRoutes.map((route, index) =>
+          route.subRoutes ? (
+            <DropdownItem
+              key={index}
+              title={route.name}
+              data={route.subRoutes}
+              isOpen={openDropdown === route.name}
+              onOpen={() => handleOpenDropdown(route.name)}
+              onClose={handleCloseDropdown}
+            />
+          ) : (
+            <Link
+              key={index}
+              to={route.route}
+              className="text-white hover:text-whitesmoke px-[20px] text-sm font-bold"
+            >
+              {route.name}
+            </Link>
+          ),
+        )}
+      </div>
 
-          <div className="hidden xl:flex gap-[30px] items-center font-syne">
-            {navRoutes.map((route, index) =>
-              route.subRoutes ? (
-                <DropdownItem
-                  key={index}
-                  title={route.name}
-                  data={route.subRoutes}
-                  isOpen={openDropdown === route.name}
-                  onOpen={() => handleOpenDropdown(route.name)}
-                  onClose={handleCloseDropdown}
-                />
-              ) : (
-                <Link
-                  key={index}
-                  to={route.route}
-                  className="text-white hover:text-whitesmoke px-[20px]"
-                >
-                  {route.name}
-                </Link>
-              ),
-            )}
-          </div>
+      <div className="flex gap-5">
+        <div className="flex items-center ">
+          <Button variant="red" route="/contact" text="Kontakt" />
+        </div>
 
-          <div className="flex items-center">
-            <Button variant="red" route="/contact" text="Kontakt" />
-          </div>
-
-          <div className="xl:hidden flex items-center">
-            {isMobileOpen ? (
-              <img
-                src="/icons/close.svg"
-                alt="Zamknij menu"
-                onClick={toggleMobileMenu}
-                className="cursor-pointer"
-              />
-            ) : (
-              <img
-                src="/icons/menu.svg"
-                alt="Zamknij menu"
-                onClick={toggleMobileMenu}
-                className="cursor-pointer"
-              />
-            )}
-          </div>
-
-          {isMobileOpen && (
-            <MobileMenu
-              isOpen={isMobileOpen}
-              onClose={toggleMobileMenu}
-              data={navRoutes}
+        <div className="xl:hidden flex items-center">
+          {isMobileOpen ? (
+            <img
+              src="/icons/close.svg"
+              alt="Zamknij menu"
+              onClick={toggleMobileMenu}
+              className="cursor-pointer"
+            />
+          ) : (
+            <img
+              src="/icons/menu.svg"
+              alt="Zamknij menu"
+              onClick={toggleMobileMenu}
+              className="cursor-pointer"
             />
           )}
         </div>
-      </nav>
-    </div>
+
+        {isMobileOpen && (
+          <MobileMenu
+            isOpen={isMobileOpen}
+            onClose={toggleMobileMenu}
+            data={navRoutes}
+          />
+        )}
+      </div>
+    </nav>
   );
 };
 

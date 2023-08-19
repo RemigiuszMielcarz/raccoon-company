@@ -29,10 +29,8 @@ const DropdownItem: React.FC<DropdownItemProps> = ({
         isOpen ? "bg-red" : ""
       }`}
     >
-      <div className="flex gap-[10px] cursor-pointer text-whitesmoke">
-        <span className={`${isOpen ? "text-white" : "text-white"}`}>
-          {title}
-        </span>
+      <div className="flex gap-[10px] cursor-pointer text-white hover:text-whitesmoke font-bold text-sm">
+        <span>{title}</span>
       </div>
       <div className={isOpen ? "absolute left-0 top-[99%] bg-red" : "hidden"}>
         <div className="grid grid-cols-4 w-max whitespace-nowrap gap-[10px] p-[20px]">

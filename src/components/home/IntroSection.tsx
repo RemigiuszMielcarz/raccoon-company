@@ -29,11 +29,14 @@ const IntroSection: React.FC = () => {
       style={{ height: "calc(100vh - 90px)" }}
       className="container flex items-center"
     >
-      <div className="max-w-[700px] text-gray">
-        <p className="tracking-[0.3px] leading-[48px] font-bold whitespace-nowrap text-xxxl">
+      <div className="">
+        <p className="text-2xl sm:text-3xl lg:text-6xl">
           Stwórzmy razem
           <br />
-          <span ref={typeTarget}></span>
+          <span
+            className="font-bold lg:whitespace-nowrap"
+            ref={typeTarget}
+          ></span>
         </p>
       </div>
     </section>

@@ -34,7 +34,7 @@ const tailwindTheme = {
       ...defaultTheme.fontSize,
       xxs: ["12px", "12px"],
       xs: ["16px", "16px"],
-      sm: ["14px", "24px"],
+      sm: ["16px", "24px"],
       base: ["16px", "30px"],
       title: ["20px", "20px"],
       lg: ["20px", "28px"],
