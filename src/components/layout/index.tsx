@@ -8,10 +8,14 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
+  const [isBlur, setIsBlur] = React.useState(false);
+
   return (
     <>
-      <Nav />
-      {children}
+      <Nav setIsBlur={setIsBlur} />
+      <div className={`w-full h-full ${isBlur ? "blur-[5px]" : ""}`}>
+        {children}
+      </div>
       <Footer />
     </>
   );

@@ -5,7 +5,9 @@ import DropdownItem from "./DropdownItem";
 import { Link } from "react-router-dom";
 import { navRoutes } from "./data";
 
-const Nav = () => {
+const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
+  setIsBlur,
+}) => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
@@ -34,7 +36,7 @@ const Nav = () => {
 
   return (
     <nav className="container bg-secondary h-[60px] lg:h-[90px] flex justify-between font-syne">
-      <Link to="/home" className="flex items-center">
+      <Link to="/" className="flex items-center">
         <img
           src="/icons/logo5.svg"
           alt="Logo"
@@ -51,6 +53,7 @@ const Nav = () => {
               isOpen={openDropdown === route.name}
               onOpen={() => handleOpenDropdown(route.name)}
               onClose={handleCloseDropdown}
+              setIsBlur={setIsBlur}
             />
           ) : (
             <Link

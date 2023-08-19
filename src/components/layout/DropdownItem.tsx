@@ -12,6 +12,7 @@ interface DropdownItemProps {
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
+  setIsBlur: (value: boolean) => void;
 }
 
 const DropdownItem: React.FC<DropdownItemProps> = ({
@@ -20,20 +21,31 @@ const DropdownItem: React.FC<DropdownItemProps> = ({
   isOpen,
   onOpen,
   onClose,
+  setIsBlur,
 }) => {
   return (
     <div
-      onMouseEnter={onOpen}
-      onMouseLeave={onClose}
+      onMouseEnter={() => {
+        setIsBlur(true);
+        onOpen();
+      }}
+      onMouseLeave={() => {
+        setIsBlur(false);
+        onClose();
+      }}
       className="relative flex h-full items-center px-[20px]"
     >
       <div className="flex gap-[10px] cursor-pointer text-white hover:text-whitesmoke font-bold text-sm">
         <span>{title}</span>
       </div>
       <div
+        onMouseLeave={() => {
+          setIsBlur(false);
+          onClose();
+        }}
         className={
           isOpen
-            ? "absolute w-max left-[-190px] top-[99%] bg-white border-0 rounded-3xl"
+            ? "absolute w-max left-[-190px] top-[99%] bg-white border-0 rounded-3xl z-10"
             : "hidden"
         }
       >
