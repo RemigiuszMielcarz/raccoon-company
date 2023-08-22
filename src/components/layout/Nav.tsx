@@ -32,8 +32,10 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
-  const toggleMobileMenu = () => setIsMobileOpen(!isMobileOpen);
-
+  const toggleMobileMenu = () => {
+    setIsMobileOpen(!isMobileOpen);
+    setIsBlur(!isMobileOpen);
+  };
   return (
     <nav className="container bg-secondary h-[60px] lg:h-[90px] flex justify-between font-syne">
       <Link to="/" className="flex items-center">
@@ -95,6 +97,7 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
             isOpen={isMobileOpen}
             onClose={toggleMobileMenu}
             data={navRoutes}
+            setIsBlur={setIsBlur}
           />
         )}
       </div>
