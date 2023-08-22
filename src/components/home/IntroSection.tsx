@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Typed from "typed.js";
+import ScrollDown from "../ScrollDown";
 
 const IntroSection: React.FC = () => {
   const typeTarget = useRef<HTMLSpanElement | null>(null);
@@ -39,6 +40,7 @@ const IntroSection: React.FC = () => {
           ></span>
         </p>
       </div>
+      <ScrollDown />
     </section>
   );
 };
