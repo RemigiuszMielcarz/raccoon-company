@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { fadeInOut } from "../../utils/motion";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -18,8 +20,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   setIsBlur,
 }) => {
   return (
-    <div
-      className={`fixed top-[70px] left-0 w-full h-full transform transition-transform duration-300 z-10 font-syne
+    <motion.div
+      variants={fadeInOut(0, 0.5)}
+      initial="hidden"
+      animate="show"
+      exit="hidden"
+      className={`fixed top-[70px] left-0 w-full h-fit transform transition-transform duration-300 z-10 font-syne
                 ${isOpen ? "scale-y-100" : "scale-y-0 origin-top"}`}
     >
       <div className="container flex flex-col">
@@ -63,7 +69,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

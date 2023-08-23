@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Button from "../Button";
 import MobileMenu from "./MobileMenu";
 import DropdownItem from "./DropdownItem";
 import { Link } from "react-router-dom";
 import { navRoutes } from "./data";
+import { fadeInOut } from "../../utils/motion";
 
 const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
   setIsBlur,
@@ -32,12 +34,32 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isMobileOpen) {
+        setIsMobileOpen(false);
+        setIsBlur(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isMobileOpen, setIsBlur]);
+
   const toggleMobileMenu = () => {
     setIsMobileOpen(!isMobileOpen);
     setIsBlur(!isMobileOpen);
   };
   return (
-    <nav className="container bg-secondary h-[60px] lg:h-[90px] flex justify-between font-syne">
+    <motion.nav
+      className="container bg-secondary h-[60px] lg:h-[90px] flex justify-between font-syne"
+      initial="hidden"
+      animate="show"
+      variants={fadeInOut(0, 0.5)}
+    >
       <Link to="/" className="flex items-center">
         <img
           src="/icons/logo5.svg"
@@ -68,7 +90,6 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
           ),
         )}
       </div>
-
       <div className="flex gap-5">
         <div className="flex items-center ">
           <Button variant="red" route="/contact" text="Kontakt" />
@@ -92,16 +113,18 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
           )}
         </div>
 
-        {isMobileOpen && (
-          <MobileMenu
-            isOpen={isMobileOpen}
-            onClose={toggleMobileMenu}
-            data={navRoutes}
-            setIsBlur={setIsBlur}
-          />
-        )}
+        <AnimatePresence>
+          {isMobileOpen && (
+            <MobileMenu
+              isOpen={isMobileOpen}
+              onClose={toggleMobileMenu}
+              data={navRoutes}
+              setIsBlur={setIsBlur}
+            />
+          )}
+        </AnimatePresence>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
