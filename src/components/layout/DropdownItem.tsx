@@ -54,7 +54,7 @@ const DropdownItem: React.FC<DropdownItemProps> = ({
             variants={dropdownVariants}
             className="absolute w-max left-[-190px] top-[99%] bg-white border-0 rounded-3xl z-10"
           >
-            <div className="grid grid-cols-4 whitespace-nowrap gap-[30px] p-[20px]">
+            <div className="w-max grid grid-cols-4 whitespace-nowrap gap-[30px] p-[20px]">
               {data.map((item: Service, index: number) => (
                 <Link
                   to={item.route}
