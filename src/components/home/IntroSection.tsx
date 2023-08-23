@@ -1,8 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Typed from "typed.js";
+import { motion, AnimatePresence } from "framer-motion";
 import ScrollDown from "../ScrollDown";
+import { fadeInOut } from "../../utils/motion";
 
 const IntroSection: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(true);
   const typeTarget = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
@@ -25,6 +28,23 @@ const IntroSection: React.FC = () => {
       }
     };
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <section
       style={{ height: "calc(100vh - 90px)" }}
@@ -40,7 +60,28 @@ const IntroSection: React.FC = () => {
           ></span>
         </p>
       </div>
-      <ScrollDown />
+      <AnimatePresence mode="wait">
+        {isVisible && (
+          <motion.div
+            initial="hidden"
+            animate="show"
+            exit="exitAnimation"
+            variants={{
+              ...fadeInOut(0, 0.5),
+              exitAnimation: {
+                opacity: 0,
+                transition: {
+                  type: "tween",
+                  duration: 0.5,
+                  ease: "easeOut",
+                },
+              },
+            }}
+          >
+            <ScrollDown />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
