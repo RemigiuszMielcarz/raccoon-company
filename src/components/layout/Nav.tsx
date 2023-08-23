@@ -102,6 +102,8 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
               alt="Zamknij menu"
               onClick={toggleMobileMenu}
               className="cursor-pointer"
+              width={30}
+              height={30}
             />
           ) : (
             <img
@@ -109,6 +111,8 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
               alt="Zamknij menu"
               onClick={toggleMobileMenu}
               className="cursor-pointer"
+              width={30}
+              height={30}
             />
           )}
         </div>
