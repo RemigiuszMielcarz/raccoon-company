@@ -57,7 +57,7 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
   };
   return (
     <motion.nav
-      className="relative z-1 container my-[20px] h-[50px] flex justify-between"
+      className="absolute left-0 right-0 z-10 container my-[20px] h-[50px] flex justify-between"
       initial="hidden"
       animate="show"
       variants={fadeInOut(0, 0.5)}
