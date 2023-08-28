@@ -6,6 +6,8 @@ import DropdownItem from "./DropdownItem";
 import { Link } from "react-router-dom";
 import { navRoutes } from "./data";
 import { fadeInOut } from "../../utils/motion";
+import { ReactComponent as FlipicoLogo } from "../../images/icons/flipico.svg";
+import { ReactComponent as AddIcon } from "../../images/icons/add.svg";
 
 const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
   setIsBlur,
@@ -55,19 +57,15 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
   };
   return (
     <motion.nav
-      className="container bg-secondary h-[60px] lg:h-[90px] flex justify-between font-syne"
+      className="relative z-1 container my-[20px] h-[50px] flex justify-between"
       initial="hidden"
       animate="show"
       variants={fadeInOut(0, 0.5)}
     >
       <Link to="/" className="flex items-center">
-        <img
-          src="/icons/logo5.svg"
-          alt="Logo"
-          className="min-w-[200px] sm:w-[300px] 2xl:w-[400px]"
-        />
+        <FlipicoLogo />
       </Link>
-      <div className="hidden xl:flex gap-[30px] items-center">
+      <div className="hidden xl:flex gap-[50px] items-center bg-white px-[36px] rounded-3xl">
         {navRoutes.map((route, index) =>
           route.subRoutes ? (
             <DropdownItem
@@ -83,7 +81,7 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
             <Link
               key={index}
               to={route.route}
-              className="text-white hover:text-whitesmoke px-[20px] text-sm font-bold"
+              className="text-display text-sm font-bold"
             >
               {route.name}
             </Link>
@@ -92,7 +90,7 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
       </div>
       <div className="flex gap-5">
         <div className="flex items-center ">
-          <Button variant="red" route="/contact" text="Kontakt" />
+          <Button variant="white" text="Wyceń projekt" icon={AddIcon} />
         </div>
 
         <div className="xl:hidden flex items-center">

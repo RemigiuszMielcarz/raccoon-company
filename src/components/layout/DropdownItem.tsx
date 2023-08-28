@@ -40,9 +40,9 @@ const DropdownItem: React.FC<DropdownItemProps> = ({
         setIsBlur(false);
         onClose();
       }}
-      className="relative flex h-full items-center px-[20px]"
+      className="relative flex h-full items-center"
     >
-      <div className="flex gap-[10px] cursor-pointer text-white hover:text-whitesmoke font-bold text-sm">
+      <div className="flex gap-[10px] cursor-pointer text-display font-bold text-sm">
         <span>{title}</span>
       </div>
       <AnimatePresence>

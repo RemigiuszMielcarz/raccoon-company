@@ -12,7 +12,7 @@ const tailwindTheme = {
       xwide: "1.5px",
     },
     container: {
-      padding: "16px",
+      padding: "50px",
       center: true,
     },
     extend: {
@@ -20,15 +20,14 @@ const tailwindTheme = {
         "3xl": "1600px",
       },
       colors: {
-        body: "#0d0d0d",
-        red: "#f20505",
+        body: "#ffffff",
         whitesmoke: "#f2f2f2",
         display: "#0d3443",
+        secondary: "#d84000",
       },
       fontFamily: {
-        lato: "Lato",
-        syne: "Syne",
-        display: "syne",
+        inter: "Inter",
+        display: "inter",
       },
     },
     fontSize: {

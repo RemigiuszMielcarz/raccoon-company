@@ -2,26 +2,30 @@ import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 type ButtonType = {
-  text?: string;
-  route: string;
-  variant: "red" | "outline";
+  variant: "orange" | "white";
+  text: string;
+  route?: string;
+  icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 };
 
-const Button: React.FC<ButtonType> = ({ text, route, variant }) => {
+const Button: React.FC<ButtonType> = ({ text, route, variant, icon: Icon }) => {
   const navigate = useNavigate();
 
   const onFrameClick = useCallback(() => {
-    navigate(route);
+    if (route) {
+      navigate(route);
+    }
   }, [navigate, route]);
 
   const buttonClass =
-    variant === "red"
-      ? "w-[full] text-link p-2 [border:none] bg-red rounded h-10 overflow-hidden flex flex-col items-center justify-center"
-      : "w-[full] text-link p-2 border-2 border-red bg-body rounded h-10 overflow-hidden flex flex-col items-center justify-center";
+    variant === "orange"
+      ? "w-[full] text-body px-5 [border:none] bg-orange rounded-3xl h-full flex items-center justify-center"
+      : "w-[full] text-display px-5 [border:none] bg-body rounded-3xl h-full flex items-center justify-center";
 
   return (
     <button className={buttonClass} autoFocus onClick={onFrameClick}>
-      <b className="text-base tracking-[0.3px] leading-[20px] font-syne text-white text-center">
+      {Icon && <Icon style={{ marginRight: "10px" }} />}
+      <b className="text-base tracking-[0.3px] leading-[20px] text-center">
         {text}
       </b>
     </button>

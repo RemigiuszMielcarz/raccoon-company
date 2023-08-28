@@ -47,8 +47,14 @@ const IntroSection: React.FC = () => {
 
   return (
     <section
-      style={{ height: "calc(100vh - 90px)" }}
-      className="container flex items-center"
+      style={{
+        height: "860px",
+        backgroundImage: `url(${process.env.PUBLIC_URL}/images/backgrounds/home.png)`,
+        backgroundPosition: "center",
+        backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
+      }}
+      className="container relative z-0 flex items-center"
     >
       <div className="">
         <p className="text-2xl sm:text-3xl lg:text-6xl">

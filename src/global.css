@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -47,6 +46,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   background-color: #0d0d0d;
+  font-family: Inter, serif;
 }
 
 img,
@@ -60,4 +60,10 @@ svg {
 
 .ReactCollapse--collapse {
   transition: height 500ms;
+}
+
+@layer components{
+  .container {
+    max-width: 1400px;
+  }
 }
