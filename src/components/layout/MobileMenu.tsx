@@ -28,7 +28,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
       className={`fixed top-[70px] left-0 w-full h-fit transform transition-transform duration-300 z-10 font-syne
                 ${isOpen ? "scale-y-100" : "scale-y-0 origin-top"}`}
     >
-      <div className="container flex flex-col">
+      <div className="container px-[16px] flex flex-col">
         <div className="flex flex-col gap-6">
           {data.map((item, index) => (
             <div key={index}>

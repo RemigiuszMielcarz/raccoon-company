@@ -46,48 +46,49 @@ const IntroSection: React.FC = () => {
   }, []);
 
   return (
-    <section
-      style={{
-        height: "860px",
-        backgroundImage: `url(${process.env.PUBLIC_URL}/images/backgrounds/home.png)`,
-        backgroundPosition: "center",
-        backgroundSize: "contain",
-        backgroundRepeat: "no-repeat",
-      }}
-      className="container relative z-0 flex items-center"
-    >
-      <div className="">
-        <p className="text-2xl sm:text-3xl lg:text-6xl">
-          Stwórzmy razem
-          <br />
-          <span
-            className="font-bold lg:whitespace-nowrap"
-            ref={typeTarget}
-          ></span>
-        </p>
-      </div>
-      <AnimatePresence mode="wait">
-        {isVisible && (
-          <motion.div
-            initial="hidden"
-            animate="show"
-            exit="exitAnimation"
-            variants={{
-              ...fadeInOut(0, 0.5),
-              exitAnimation: {
-                opacity: 0,
-                transition: {
-                  type: "tween",
-                  duration: 0.5,
-                  ease: "easeOut",
+    <section className="container lg:px-0">
+      <div
+        className="container lg:px-0 flex items-center bg-cover lg:bg-contain rounded-[8px] lg:rounded-none"
+        style={{
+          height: "860px",
+          backgroundImage: `url(${process.env.PUBLIC_URL}/images/backgrounds/home.png)`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="lg:pl-[50px]">
+          <p className="text-2xl sm:text-3xl lg:text-6xl">
+            Stwórzmy razem
+            <br />
+            <span
+              className="font-bold lg:whitespace-nowrap"
+              ref={typeTarget}
+            ></span>
+          </p>
+        </div>
+        <AnimatePresence mode="wait">
+          {isVisible && (
+            <motion.div
+              initial="hidden"
+              animate="show"
+              exit="exitAnimation"
+              variants={{
+                ...fadeInOut(0, 0.5),
+                exitAnimation: {
+                  opacity: 0,
+                  transition: {
+                    type: "tween",
+                    duration: 0.5,
+                    ease: "easeOut",
+                  },
                 },
-              },
-            }}
-          >
-            <ScrollDown />
-          </motion.div>
-        )}
-      </AnimatePresence>
+              }}
+            >
+              <ScrollDown />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </section>
   );
 };

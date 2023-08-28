@@ -12,8 +12,11 @@ const tailwindTheme = {
       xwide: "1.5px",
     },
     container: {
-      padding: "50px",
       center: true,
+      padding: {
+        DEFAULT: "8px",
+        lg: "50px",
+      },
     },
     extend: {
       screens: {
