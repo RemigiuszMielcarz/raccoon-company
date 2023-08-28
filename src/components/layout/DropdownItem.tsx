@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 interface Service {
   name: string;
   route: string;
+  icon: string;
 }
 
 const dropdownVariants = {
@@ -52,15 +53,16 @@ const DropdownItem: React.FC<DropdownItemProps> = ({
             animate="visible"
             exit="exit"
             variants={dropdownVariants}
-            className="absolute w-max left-[-190px] top-[99%] bg-white border-0 rounded-3xl z-10"
+            className="absolute lg:w-max -left-[525px] top-[60px] bg-white border-0 rounded-3xl z-10"
           >
-            <div className="w-max grid grid-cols-4 whitespace-nowrap gap-[30px] p-[20px]">
+            <div className="w-max grid grid-cols-6 whitespace-nowrap gap-5 p-[20px]">
               {data.map((item: Service, index: number) => (
                 <Link
                   to={item.route}
                   key={index}
-                  className="text-black hover:text-whitesmoke"
+                  className="text-display flex flex-col gap-1 bg-grey justify-center items-center py-5 px-4 rounded-[10px]"
                 >
+                  <img height="40px" src={item.icon} alt={item.name} />
                   {item.name}
                 </Link>
               ))}

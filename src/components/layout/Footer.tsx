@@ -1,5 +1,6 @@
 import React from "react";
 import { navRoutes, resources, services, socialMedia } from "./data";
+import { ReactComponent as FlipicoLogo } from "../../images/icons/flipico.svg";
 
 interface FooterSectionProps {
   title: string;
@@ -31,7 +32,7 @@ const Footer: React.FC = () => {
     <footer className="container flex flex-col text-whitesmoke font-syne py-16">
       <div className="flex flex-col lg:flex-row lg:mb-[60px] lg:gap-[20px] lg:justify-between">
         <div className="flex flex-col lg:max-w-xs gap-[16px] mb-[50px] lg:mb-0">
-          <img src="/icons/logo6.svg" alt="RaccoonLogo" />
+          <FlipicoLogo />
           <p>
             Rozwój produktu od podstaw, zebranie dedykowanego zespołu lub
             zwiększenie personelu - możemy rozpocząć od miejsca, w którym
