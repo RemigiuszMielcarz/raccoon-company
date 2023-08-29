@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Arrow from "./icons/Arrow";
 
 const ScrollToTopButton: React.FC = () => {
   const scrollToTop = () => {
@@ -13,9 +14,9 @@ const ScrollToTopButton: React.FC = () => {
         e.preventDefault();
         scrollToTop();
       }}
-      className="fixed bottom-10 right-10 w-11 h-11 bg-red rounded-full z-50 flex items-center justify-center transition-all duration-400 hover:bg-white"
+      className="fixed bottom-10 right-10 w-11 h-11 bg-red rounded-full z-50 flex items-center justify-center transition-all duration-400 hover:bg-white rotate-180"
     >
-      UP
+      <Arrow className="rotate-90" />
     </Link>
   );
 };
