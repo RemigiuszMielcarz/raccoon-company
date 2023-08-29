@@ -26,6 +26,7 @@ const tailwindTheme = {
         body: "#ffffff",
         whitesmoke: "#f2f2f2",
         grey: "#f6f6f6",
+        section: "#999999",
         display: "#0d3443",
         secondary: "#d84000",
       },

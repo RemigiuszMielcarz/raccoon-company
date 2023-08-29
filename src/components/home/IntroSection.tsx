@@ -57,7 +57,7 @@ const IntroSection: React.FC = () => {
         }}
       >
         <div className="lg:pl-[50px]">
-          <p className="text-2xl sm:text-3xl lg:text-6xl">
+          <p className="text-xxxl">
             Stwórzmy razem
             <br />
             <span

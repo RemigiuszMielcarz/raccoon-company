@@ -1,9 +1,13 @@
-import React from "react";
-import { Tilt } from "react-tilt";
+import React, { MouseEventHandler } from "react";
 import { motion } from "framer-motion";
+import Slider from "react-slick";
 import { SectionWrapper } from "../../hoc";
 import { projects } from "../../contstants";
 import { fadeIn, staggerContainer } from "../../utils/motion";
+import Arrow from "../icons/Arrow";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import styles from "../../scss/projects.module.scss";
 
 type ProjectCardProps = {
   index: number;
@@ -11,50 +15,23 @@ type ProjectCardProps = {
   description: string;
   tags: { name: string; color: string }[];
   image: string;
-  isLast: boolean;
-  isFirst: boolean;
 };
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
-  index,
   name,
   description,
   tags,
   image,
-  isLast,
-  isFirst,
 }) => {
-  const cardMargin = isFirst
-    ? "mb-4 lg:mb-0"
-    : isLast
-    ? "mt-4 lg:mt-0"
-    : "my-4 lg:my-0";
   return (
-    <motion.div
-      variants={fadeIn("up", "spring", index * 0.5, 0.75)}
-      className={cardMargin}
-    >
-      <Tilt
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className="bg-tertiary p-5 rounded-2xl"
-      >
-        <div className="relative w-full">
-          <img
-            src={image}
-            alt="project_image"
-            className="max-w-full h-[380px] rounded-2xl"
-          />
-        </div>
-
-        <div className="mt-5">
-          <h3 className="text-white font-bold text-[24px]">{name}</h3>
-          <p className="mt-2 text-secondary text-[14px]">{description}</p>
-        </div>
-
+    <div className="flex items-center pb-[50px]">
+      <div className="w-1/2 h-full relative">
+        <h3 className="text-display text-lg lg:text-[50px] lg:leading-[50px]">
+          {name}
+        </h3>
+        <p className="mt-2 text-section text-sm lg:text-lg max-w-[530px]">
+          {description}
+        </p>
         <div className="mt-4 flex flex-wrap gap-2">
           {tags.map((tag) => (
             <p
@@ -65,27 +42,76 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </p>
           ))}
         </div>
-      </Tilt>
-    </motion.div>
+      </div>
+
+      <div
+        className="w-1/2 mx-1 relative flex items-center justify-center rounded-3xl bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${process.env.PUBLIC_URL}/images/backgrounds/bg.png)`,
+          height: "480px",
+        }}
+      >
+        <img
+          src={image}
+          alt="project_image"
+          className="max-w-full h-[380px] z-10"
+        />
+      </div>
+    </div>
   );
 };
 
 const ProjectSection = () => {
+  function PrevArrow(props: {
+    style?: React.CSSProperties;
+    onClick?: MouseEventHandler;
+  }) {
+    const { style, onClick } = props;
+    return (
+      <div style={style} onClick={onClick} className="slick-arrow-prev">
+        <Arrow className="rotate-180" />
+      </div>
+    );
+  }
+
+  function NextArrow(props: {
+    style?: React.CSSProperties;
+    onClick?: MouseEventHandler;
+  }) {
+    const { style, onClick } = props;
+    return (
+      <div style={style} onClick={onClick} className="slick-arrow-next">
+        <Arrow />
+      </div>
+    );
+  }
+
+  const settings = {
+    dots: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    prevArrow: <PrevArrow style={styles} />,
+    nextArrow: <NextArrow style={styles} />,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
+  };
+
   return (
-    <>
+    <section className="container bg-grey rounded-3xl pt-[50px]">
       <motion.div
         initial="hidden"
         animate="show"
         variants={staggerContainer(0.1)}
       >
-        <p className="text-sm">Nasze ostatnie ruchy</p>
-        <h2 className="text-6xl">Projekty.</h2>
+        <p className="text-tile text-section font-semibold">
+          03 - Nasze Projekty
+        </p>
       </motion.div>
 
-      <div className="w-full flex">
+      <div className="w-full">
         <motion.p
           variants={fadeIn("", "", 0.1, 1)}
-          className="mt-3 text-secondary text-[17px] max-w-4xl leading-[30px]"
+          className="mt-5 text-display text-lg lg:text-[48px] leading-[60px] font-semibold"
         >
           Nasza firma tworzy niestandardowe rozwiązania programowe w celu
           poprawy interakcji użytkowników z Twoimi produktami i zwiększenia
@@ -93,19 +119,17 @@ const ProjectSection = () => {
         </motion.p>
       </div>
 
-      <motion.div className="mt-20 flex-col lg:grid lg:grid-cols-2 flex-wrap gap-7">
-        {projects.map((project, index) => (
-          <ProjectCard
-            key={`project-${index}`}
-            index={index}
-            {...project}
-            isFirst={index === 0}
-            isLast={index === projects.length - 1}
-          />
-        ))}
-      </motion.div>
-    </>
+      <div className={styles.projects}>
+        <Slider {...settings}>
+          {projects.map((project, index) => (
+            <motion.div className="mt-[60px]" key={`project-slider-${index}`}>
+              <ProjectCard index={index} {...project} />
+            </motion.div>
+          ))}
+        </Slider>
+      </div>
+    </section>
   );
 };
 
-export default SectionWrapper(ProjectSection, "");
+export default SectionWrapper(ProjectSection, "projects");

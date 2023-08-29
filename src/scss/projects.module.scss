@@ -1,0 +1,33 @@
+.projects {
+  :global .slick-slider {
+    @media (max-width: 860px) {
+      .slick-arrow-prev, .slick-arrow-next { display: none !important; }
+    }
+
+    @media (min-width: 860px) {
+      .slick-arrow-prev, .slick-arrow-next {
+        position: absolute;
+        bottom: 90px;
+        z-index: 10;
+        padding: 15px;
+        cursor: pointer;
+      }
+
+      .slick-arrow-prev {
+        background: white;
+        left: 0;
+        border-radius: 25px;
+        svg path { fill: #d84000; }
+
+      }
+
+      .slick-arrow-next {
+        background: #d84000;
+        left: 60px;
+        border-radius: 25px;
+
+        svg path { fill: white; }
+      }
+    }
+  }
+}

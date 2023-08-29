@@ -33,7 +33,7 @@ const Layout = ({ children }: LayoutProps) => {
         {children}
       </motion.div>
       <ScrollToTopButton />
-      <Footer />
+      {/*<Footer />*/}
     </>
   );
 };
