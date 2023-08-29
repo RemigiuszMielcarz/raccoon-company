@@ -24,7 +24,7 @@
   }
 
   a {
-    @apply no-underline decoration-0 cursor-pointer;
+    @apply no-underline decoration-0 cursor-pointer text-inherit;
   }
 
   p,

@@ -14,7 +14,7 @@ const ScrollToTopButton: React.FC = () => {
         e.preventDefault();
         scrollToTop();
       }}
-      className="fixed bottom-10 right-10 w-11 h-11 bg-red rounded-full z-50 flex items-center justify-center transition-all duration-400 hover:bg-white rotate-180"
+      className="fixed bottom-10 right-10 w-11 h-11 bg-secondary rounded-full z-50 flex items-center justify-center transition-all duration-400 rotate-180"
     >
       <Arrow className="rotate-90" />
     </Link>

@@ -10,6 +10,14 @@ import video from "../../images/icons/menu/video.svg";
 import web from "../../images/icons/menu/web.svg";
 import webApp from "../../images/icons/menu/web-app.svg";
 import webFlow from "../../images/icons/menu/webflow.svg";
+import linkedin from "../../images/icons/socials/linkedin.svg";
+import twitter from "../../images/icons/socials/twitter.svg";
+import facebook from "../../images/icons/socials/facebook.svg";
+import instagram from "../../images/icons/socials/instagram.svg";
+import github from "../../images/icons/socials/github.svg";
+import behance from "../../images/icons/socials/behance.svg";
+import dribble from "../../images/icons/socials/dribble.svg";
+import webflow from "../../images/icons/socials/webflow.svg";
 
 export const services = [
   { name: "Strony Internetowe", route: "/web", icon: web },
@@ -52,26 +60,80 @@ export const navRoutes = [
 
 export const socialMedia = [
   {
-    name: "Facebook",
-    route: "https://www.facebook.com",
+    name: "LinkedIn",
+    route: "https://www.linkedin.com",
+    icon: linkedin,
   },
   {
     name: "Twitter",
     route: "https://www.twitter.com",
+    icon: twitter,
   },
   {
-    name: "LinkedIn",
-    route: "https://www.linkedin.com",
+    name: "Facebook",
+    route: "https://www.facebook.com",
+    icon: facebook,
+  },
+  {
+    name: "Instagram",
+    route: "https://www.instagram.com",
+    icon: instagram,
+  },
+  {
+    name: "Behance",
+    route: "https://www.behance.com",
+    icon: behance,
+  },
+  {
+    name: "Dribble",
+    route: "https://www.dribble.com",
+    icon: dribble,
+  },
+  {
+    name: "Github",
+    route: "https://www.github.com",
+    icon: github,
+  },
+  {
+    name: "Webflow",
+    route: "https://www.webflow.com",
+    icon: webflow,
+  },
+];
+
+export const locations = [
+  "Warszawa",
+  "Wrocław",
+  "Gdańsk",
+  "Świdnica",
+  "Dzierżoniów",
+];
+
+export const tech = [
+  "Gatsby",
+  "React.js",
+  "Next.js",
+  "Tailwind",
+  "Three.js",
+  "Webflow",
+];
+
+export const companyItems = [
+  {
+    name: "P.P.H.U. Wojciech Smoła",
+    tel: "+48 571 799 926",
+    email: "hello@flipico.agency",
+    nip: "NIP: PL 882 214 17 88",
   },
 ];
 
 export const resources = [
   {
-    name: "Polityka Prywatności",
-    route: "/copyrights",
-  },
-  {
     name: "Regulamin",
     route: "/regulations",
+  },
+  {
+    name: "Polityka Prywatności",
+    route: "/copyrights",
   },
 ];
