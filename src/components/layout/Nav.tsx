@@ -89,19 +89,18 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
         )}
       </div>
       <div className="flex gap-5">
-        <div className="flex items-center ">
+        <div className="hidden xl:flex items-center ">
           <Button variant="white" text="Wyceń projekt" icon={AddIcon} />
         </div>
 
-        <div className="xl:hidden flex items-center">
+        <div className="xl:hidden flex items-center justify-center w-[40px] h-[40px] rounded-full bg-white">
           {isMobileOpen ? (
             <img
               src="/icons/close.svg"
               alt="Zamknij menu"
               onClick={toggleMobileMenu}
               className="cursor-pointer"
-              width={30}
-              height={30}
+              height={16}
             />
           ) : (
             <img
@@ -109,8 +108,7 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
               alt="Zamknij menu"
               onClick={toggleMobileMenu}
               className="cursor-pointer"
-              width={30}
-              height={30}
+              height={16}
             />
           )}
         </div>
