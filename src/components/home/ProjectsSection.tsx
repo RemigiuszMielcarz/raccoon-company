@@ -24,9 +24,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   image,
 }) => {
   return (
-    <div className="flex flex-col lg:flex-row lg:items-center pb-[50px]">
-      <div className="w-full md:w-1/2 h-full relative">
-        <h3 className="text-display text-lg lg:text-[50px] lg:leading-[50px]">
+    <div className="flex flex-col-reverse lg:flex-row lg:items-center pb-[50px]">
+      <div className="w-full pt-4 lg:pt-0 pb-16 lg:pb-0 md:w-1/2 h-full relative">
+        <h3 className="text-display text-sm lg:text-[50px] lg:leading-[50px]">
           {name}
         </h3>
         <p className="mt-2 text-section text-sm lg:text-lg max-w-[530px]">
@@ -45,17 +45,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
 
       <div
-        className="w-full lg:w-1/2 mt-5 lg:mt-0 mx-0 lg:mx-1 relative flex items-center justify-center rounded-3xl bg-cover bg-center"
+        className="w-full lg:w-1/2 mt-5 lg:mt-0 mx-0 lg:mx-1 relative flex items-center justify-center rounded-3xl bg-cover bg-center p-4 lg:p-0 min-h-[246px] lg:h-[480px]"
         style={{
           backgroundImage: `url(${process.env.PUBLIC_URL}/images/backgrounds/bg.png)`,
-          height: "480px",
         }}
       >
-        <img
-          src={image}
-          alt="project_image"
-          className="max-w-full h-[380px] z-10"
-        />
+        <img src={image} alt="project_image" className="max-h-[380px] z-10" />
       </div>
     </div>
   );
@@ -103,7 +98,7 @@ const ProjectSection = () => {
         animate="show"
         variants={staggerContainer(0.1)}
       >
-        <p className="text-tile text-section font-semibold">
+        <p className="text-md lg:text-title text-section font-semibold">
           03 - Nasze Projekty
         </p>
       </motion.div>
@@ -111,7 +106,7 @@ const ProjectSection = () => {
       <div className="w-full">
         <motion.p
           variants={fadeIn("", "", 0.1, 1)}
-          className="mt-5 text-display text-lg lg:text-[48px] leading-[60px] font-semibold"
+          className="mt-5 text-display text-xl lg:text-xxl font-medium"
         >
           Nasza firma tworzy niestandardowe rozwiązania programowe w celu
           poprawy interakcji użytkowników z Twoimi produktami i zwiększenia
@@ -122,7 +117,10 @@ const ProjectSection = () => {
       <div className={styles.projects}>
         <Slider {...settings}>
           {projects.map((project, index) => (
-            <motion.div className="mt-[60px]" key={`project-slider-${index}`}>
+            <motion.div
+              className="mt-[32px] lg:mt-[60px]"
+              key={`project-slider-${index}`}
+            >
               <ProjectCard index={index} {...project} />
             </motion.div>
           ))}

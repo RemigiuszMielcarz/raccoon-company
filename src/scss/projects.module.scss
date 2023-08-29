@@ -1,33 +1,31 @@
 .projects {
   :global .slick-slider {
-    @media (max-width: 1023px) {
-      .slick-arrow-prev, .slick-arrow-next { display: none !important; }
+    .slick-arrow-prev, .slick-arrow-next {
+      position: absolute;
+      bottom: 50px;
+      z-index: 10;
+      padding: 15px;
+      cursor: pointer;
+
+      @media (max-width: 1023px) {
+        bottom: 32px;
+      }
     }
 
-    @media (min-width: 1023px) {
-      .slick-arrow-prev, .slick-arrow-next {
-        position: absolute;
-        bottom: 50px;
-        z-index: 10;
-        padding: 15px;
-        cursor: pointer;
-      }
+    .slick-arrow-prev {
+      background: white;
+      left: 0;
+      border-radius: 25px;
+      svg path { fill: #d84000; }
 
-      .slick-arrow-prev {
-        background: white;
-        left: 0;
-        border-radius: 25px;
-        svg path { fill: #d84000; }
+    }
 
-      }
+    .slick-arrow-next {
+      background: #d84000;
+      left: 60px;
+      border-radius: 25px;
 
-      .slick-arrow-next {
-        background: #d84000;
-        left: 60px;
-        border-radius: 25px;
-
-        svg path { fill: white; }
-      }
+      svg path { fill: white; }
     }
   }
 }
