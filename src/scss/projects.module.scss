@@ -1,10 +1,10 @@
 .projects {
   :global .slick-slider {
-    @media (max-width: 860px) {
+    @media (max-width: 1023px) {
       .slick-arrow-prev, .slick-arrow-next { display: none !important; }
     }
 
-    @media (min-width: 860px) {
+    @media (min-width: 1023px) {
       .slick-arrow-prev, .slick-arrow-next {
         position: absolute;
         bottom: 90px;

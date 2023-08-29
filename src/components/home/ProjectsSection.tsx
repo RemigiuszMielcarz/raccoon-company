@@ -24,8 +24,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   image,
 }) => {
   return (
-    <div className="flex items-center pb-[50px]">
-      <div className="w-1/2 h-full relative">
+    <div className="flex flex-col lg:flex-row lg:items-center pb-[50px]">
+      <div className="w-full md:w-1/2 h-full relative">
         <h3 className="text-display text-lg lg:text-[50px] lg:leading-[50px]">
           {name}
         </h3>
@@ -45,7 +45,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
 
       <div
-        className="w-1/2 mx-1 relative flex items-center justify-center rounded-3xl bg-cover bg-center"
+        className="w-full lg:w-1/2 mt-5 lg:mt-0 mx-0 lg:mx-1 relative flex items-center justify-center rounded-3xl bg-cover bg-center"
         style={{
           backgroundImage: `url(${process.env.PUBLIC_URL}/images/backgrounds/bg.png)`,
           height: "480px",
