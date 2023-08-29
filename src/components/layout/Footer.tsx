@@ -13,7 +13,7 @@ import { ReactComponent as FlipicoAiLabsLogo } from "../../images/icons/flipicoa
 import { ReactComponent as Location } from "../../images/icons/location.svg";
 import { ReactComponent as Hook } from "../../images/icons/hook.svg";
 import { projects } from "../../contstants";
-import styles from "../../scss/footer.module.scss";
+import styles from "../../scss/dropdown.module.scss";
 
 const useWindowWidth = () => {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -159,7 +159,7 @@ const Footer: React.FC = () => {
         </div>
         <div className="flex flex-col gap-6 lg:gap-0 lg:flex-row lg:justify-between text-m lg:text-lg text-grey">
           <p>Nasze lokalizacje</p>
-          <div className="grid grid-cols-2 md:grid-cols-5 xl:gap-10 2xl:gap-16 mb-8 lg:mb-[60px]">
+          <div className="grid grid-cols-2 md:grid-cols-5 xl:gap-10 2xl:gap-16 gap-y-6 mb-8 lg:mb-[60px]">
             {locations.map((location, index) => (
               <div
                 key={index}

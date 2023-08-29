@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeInOut } from "../../utils/motion";
+import { ReactComponent as Hook } from "../../images/icons/hook.svg";
+import styles from "../../scss/dropdown.module.scss";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -19,6 +21,16 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   data,
   setIsBlur,
 }) => {
+  const [expandedService, setExpandedService] = useState<string | null>(null);
+
+  const toggleServiceExpansion = (serviceName: string) => {
+    if (expandedService === serviceName) {
+      setExpandedService(null);
+    } else {
+      setExpandedService(serviceName);
+    }
+  };
+
   return (
     <motion.div
       variants={fadeInOut(0, 0.5)}
@@ -32,30 +44,46 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         <div className="flex flex-col gap-6">
           {data.map((item, index) => (
             <div key={index}>
-              <a
-                href={item.route}
-                className="font-semibold text-title text-white"
-                onClick={() => {
-                  onClose();
-                  setIsBlur(false);
-                }}
-              >
-                {item.name}
-              </a>
+              <div className="flex justify-between items-center">
+                <a
+                  href={item.route}
+                  className="text-title text-white"
+                  onClick={() => {
+                    onClose();
+                    setIsBlur(false);
+                  }}
+                >
+                  {item.name}
+                </a>
+                {item.name === "Usługi" && (
+                  <Hook
+                    onClick={() => toggleServiceExpansion(item.name)}
+                    className={`cursor-pointer transform transition-transform duration-300 ${
+                      expandedService === item.name ? "rotate-180" : ""
+                    }`}
+                  />
+                )}
+              </div>
 
               {item.subRoutes && (
-                <div className="flex flex-col gap-6 mt-8">
+                <div
+                  className={`flex flex-col gap-6 ${
+                    item.name === "Usługi"
+                      ? expandedService === "Usługi"
+                        ? `${styles.expanded}`
+                        : styles.collapsed
+                      : ""
+                  }`}
+                >
                   {item.subRoutes.map((subItem, subIndex) => (
                     <a
                       key={subIndex}
                       href={subItem.route}
-                      className={`transition-opacity duration-300 ease-in-out ${
-                        isOpen ? "opacity-100" : "opacity-0"
-                      } transition-delay-[${subIndex * 50}ms]`}
                       onClick={() => {
                         onClose();
                         setIsBlur(false);
                       }}
+                      className={`${subIndex === 0 ? "mt-8" : ""}`}
                     >
                       <div className="flex gap-4 items-center">
                         <img height="40px" src={subItem.icon} alt={item.name} />
