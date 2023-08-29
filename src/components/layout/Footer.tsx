@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   companyItems,
   locations,
@@ -13,17 +13,63 @@ import { ReactComponent as FlipicoAiLabsLogo } from "../../images/icons/flipicoa
 import { ReactComponent as Location } from "../../images/icons/location.svg";
 import { ReactComponent as Hook } from "../../images/icons/hook.svg";
 import { projects } from "../../contstants";
+import styles from "../../scss/footer.module.scss";
+
+const useWindowWidth = () => {
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Initial call
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return windowWidth;
+};
 
 interface FooterSectionProps {
   title?: string;
   items: { name: string; route?: string }[];
+  onToggle: (title: string) => void;
+  openItem: string | null;
 }
 
-const FooterSection: React.FC<FooterSectionProps> = ({ title, items }) => {
+const FooterSection: React.FC<FooterSectionProps> = ({
+  title,
+  items,
+  onToggle,
+  openItem,
+}) => {
+  const windowWidth = useWindowWidth();
+
+  const handleToggle = () => {
+    if (windowWidth < 1024 && title) {
+      onToggle(title);
+    }
+  };
+
+  const shouldShowHook = windowWidth < 1024;
+  const isOpen = openItem === title;
+
   return (
     <div className="flex flex-col gap-[16px] text-m lg:text-lg text-menu">
-      <p className="text-grey">{title}</p>
-      <ul className="list-none flex flex-col gap-[8px]">
+      <div
+        className="flex justify-between cursor-pointer"
+        onClick={handleToggle}
+      >
+        <p className="text-grey cursor-pointer">{title}</p>
+        {shouldShowHook && (
+          <Hook style={{ transform: isOpen ? "rotate(180deg)" : "none" }} />
+        )}{" "}
+      </div>
+      <ul
+        className={`list-none flex flex-col gap-[8px] ${
+          !shouldShowHook || isOpen
+            ? `${styles.expanded}`
+            : `${styles.collapsed}`
+        }`}
+      >
         {items.map((item, index) => (
           <li key={index}>
             {item.route ? (
@@ -46,6 +92,16 @@ const FooterSection: React.FC<FooterSectionProps> = ({ title, items }) => {
 };
 
 const Footer: React.FC = () => {
+  const [openItem, setOpenItem] = useState<string | null>(null);
+
+  const onToggle = (title: string) => {
+    if (openItem === title) {
+      setOpenItem(null);
+    } else {
+      setOpenItem(title);
+    }
+  };
+
   return (
     <footer className="container flex flex-col bg-black text-white py-16">
       <div className="container lg:px-0">
@@ -54,7 +110,7 @@ const Footer: React.FC = () => {
             <FlipicoLogo />
             <FlipicoAiLabsLogo />
           </div>
-          <div className="flex gap-[16px] lg:gap-[30px]">
+          <div className="flex gap-[10px] lg:gap-[30px]">
             {socialMedia.map((media, index) => (
               <a key={index} href={media.route}>
                 <img src={media.icon} alt={media.name} />
@@ -62,7 +118,7 @@ const Footer: React.FC = () => {
             ))}
           </div>
         </div>
-        <div className="grid lg:grid-cols-5 gap-[12px] xl:gap-6 gap-y-[48px] mb-[60px]">
+        <div className="grid lg:grid-cols-5 gap-[12px] xl:gap-6 gap-y-8 mb-[60px]">
           <div className="flex flex-col gap-[10px]">
             {Object.keys(companyItems[0]).map((key) => (
               <p
@@ -76,16 +132,30 @@ const Footer: React.FC = () => {
               </p>
             ))}
           </div>
-          <FooterSection title="Oferta" items={services} />
+          <FooterSection
+            title="Oferta"
+            items={services}
+            onToggle={onToggle}
+            openItem={openItem}
+          />
           <FooterSection
             title="Portfolio"
             items={projects.map((project) => ({ name: project.name }))}
+            onToggle={onToggle}
+            openItem={openItem}
           />
           <FooterSection
             title="Technologie"
             items={tech.map((name) => ({ name }))}
+            onToggle={onToggle}
+            openItem={openItem}
           />
-          <FooterSection title="Firma" items={navRoutes} />
+          <FooterSection
+            title="Firma"
+            items={navRoutes}
+            onToggle={onToggle}
+            openItem={openItem}
+          />
         </div>
         <div className="flex flex-col gap-6 lg:gap-0 lg:flex-row lg:justify-between text-m lg:text-lg text-grey">
           <p>Nasze lokalizacje</p>
