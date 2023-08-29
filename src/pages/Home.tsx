@@ -4,7 +4,7 @@ import ProjectsSection from "../components/home/ProjectsSection";
 
 const Home: React.FC = () => {
   return (
-    <main className="text-whitesmoke mt-2 lg:mt-5">
+    <main className="mt-2 lg:mt-5">
       <IntroSection />
       <ProjectsSection />
     </main>

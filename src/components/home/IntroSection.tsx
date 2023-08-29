@@ -48,7 +48,7 @@ const IntroSection: React.FC = () => {
   return (
     <section className="container lg:px-0">
       <div
-        className="container lg:px-0 flex items-center bg-cover lg:bg-contain rounded-[8px] lg:rounded-none"
+        className="container relative lg:px-0 flex items-center bg-cover lg:bg-contain rounded-[8px] lg:rounded-none"
         style={{
           height: "860px",
           backgroundImage: `url(${process.env.PUBLIC_URL}/images/backgrounds/home.png)`,
@@ -57,7 +57,7 @@ const IntroSection: React.FC = () => {
         }}
       >
         <div className="lg:pl-[50px]">
-          <p className="text-xxxl">
+          <p className="text-xxxl text-white">
             Stwórzmy razem
             <br />
             <span
