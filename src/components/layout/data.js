@@ -21,17 +21,17 @@ import webflow from "../../images/icons/socials/webflow.svg";
 
 export const services = [
   { name: "Strony Internetowe", route: "/web", icon: web },
-  { name: "Opieka Marketplace", route: "/marketplace", icon: marketplace },
-  { name: "Sklepy Internetowe", route: "/online-shops", icon: shop },
   { name: "Strony Webflow", route: "/product-photos", icon: webFlow },
-  { name: "Aplikacje Internetowe", route: "/web-apps", icon: webApp },
-  { name: "Kampanie Mailingowe", route: "/email-campaigns", icon: mail },
+  { name: "Sklepy Internetowe", route: "/online-shops", icon: shop },
   { name: "Wdrożenia Baselinker", route: "/baselinker", icon: baselinker },
-  { name: "Automatyzacja (RPA)", route: "/rpa", icon: rpa },
-  { name: "Montaż Video", route: "/video", icon: video },
+  { name: "Opieka Marketplace", route: "/marketplace", icon: marketplace },
+  { name: "Aplikacje Internetowe", route: "/web-apps", icon: webApp },
   { name: "Automatyzacja (AI)", route: "/ai", icon: ai },
+  { name: "Automatyzacja (RPA)", route: "/rpa", icon: rpa },
+  { name: "Kampanie Mailingowe", route: "/email-campaigns", icon: mail },
   { name: "UI / UX Design", route: "/design", icon: ui },
   { name: "Social Media", route: "/social-media", icon: socialMediaIcon },
+  { name: "Montaż Video", route: "/video", icon: video },
 ];
 
 export const navRoutes = [

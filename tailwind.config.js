@@ -39,8 +39,9 @@ const tailwindTheme = {
     fontSize: {
       ...defaultTheme.fontSize,
       xxs: ["12px", "12px"],
-      md: ["14px", "20px"],
+      xss: ["12px", "20px"],
       xs: ["16px", "16px"],
+      md: ["14px", "20px"],
       m: ["16px", "20px"],
       sm: ["16px", "24px"],
       base: ["16px", "30px"],
@@ -48,7 +49,7 @@ const tailwindTheme = {
       lg: ["20px", "30px"],
       xl: ["24px", "40px"],
       xxl: ["36px", "50px"],
-      xxxl: ["48px", "64px"],
+      xxxl: ["48px", "60px"],
     },
   },
   corePlugins: {
