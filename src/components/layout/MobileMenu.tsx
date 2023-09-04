@@ -33,15 +33,16 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 
   return (
     <motion.div
+      id="mobileMenu"
       variants={fadeInOut(0, 0.5)}
       initial="hidden"
       animate="show"
       exit="hidden"
-      className={`fixed top-[80px] left-0 w-full h-fit transform transition-transform duration-300 z-10
+      className={`absolute top-[80px] left-0 w-full h-fit transform transition-transform duration-300 z-10 font-semibold pb-10
                 ${isOpen ? "scale-y-100" : "scale-y-0 origin-top"}`}
     >
       <div className="container px-[16px] flex flex-col">
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-8">
           {data.map((item, index) => (
             <div key={index}>
               <div className="flex justify-between items-center">

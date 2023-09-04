@@ -21,7 +21,7 @@ const useWindowWidth = () => {
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
-    handleResize(); // Initial call
+    handleResize();
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -53,25 +53,28 @@ const FooterSection: React.FC<FooterSectionProps> = ({
   const isOpen = openItem === title;
 
   return (
-    <div className="flex flex-col gap-[16px] text-m lg:text-lg text-menu">
+    <div className="flex flex-col text-m lg:text-lg text-menu">
       <div
         className="flex justify-between cursor-pointer"
         onClick={handleToggle}
       >
-        <p className="text-grey cursor-pointer">{title}</p>
+        <p className="text-grey cursor-pointer font-semibold">{title}</p>
         {shouldShowHook && (
           <Hook style={{ transform: isOpen ? "rotate(180deg)" : "none" }} />
-        )}{" "}
+        )}
       </div>
       <ul
-        className={`list-none flex flex-col gap-[8px] ${
+        className={`list-none flex flex-col gap-6 lg:gap-[10px] ${
           !shouldShowHook || isOpen
             ? `${styles.expanded}`
             : `${styles.collapsed}`
         }`}
       >
         {items.map((item, index) => (
-          <li key={index}>
+          <li
+            key={index}
+            className={`${index === 0 ? "mt-8 lg:mt-[10px]" : ""}`}
+          >
             {item.route ? (
               <a
                 href={item.route}
@@ -110,7 +113,7 @@ const Footer: React.FC = () => {
             <FlipicoLogo />
             <FlipicoAiLabsLogo />
           </div>
-          <div className="flex gap-[10px] lg:gap-[30px]">
+          <div className="flex justify-between lg:gap-[30px]">
             {socialMedia.map((media, index) => (
               <a key={index} href={media.route}>
                 <img src={media.icon} alt={media.name} />
@@ -118,7 +121,7 @@ const Footer: React.FC = () => {
             ))}
           </div>
         </div>
-        <div className="grid lg:grid-cols-5 gap-[12px] xl:gap-6 gap-y-8 mb-[60px]">
+        <div className="grid lg:grid-cols-5 gap-8 xl:gap-6 mb-[60px]">
           <div className="flex flex-col gap-[10px]">
             {Object.keys(companyItems[0]).map((key) => (
               <p
@@ -157,16 +160,18 @@ const Footer: React.FC = () => {
             openItem={openItem}
           />
         </div>
-        <div className="flex flex-col gap-6 lg:gap-0 lg:flex-row lg:justify-between text-m lg:text-lg text-grey">
-          <p>Nasze lokalizacje</p>
-          <div className="grid grid-cols-2 md:grid-cols-5 xl:gap-10 2xl:gap-16 gap-y-6 mb-8 lg:mb-[60px]">
+        <div className="flex lg:justify-between text-grey font-semibold mb-8 lg:mb-[60px]">
+          <div className="grid grid-cols-2 xl:grid-cols-6 gap-10 xl:gap-14 gap-y-6">
+            <p className="flex items-center text-m lg:text-lg whitespace-nowrap">
+              Nasze lokalizacje
+            </p>
             {locations.map((location, index) => (
               <div
                 key={index}
                 className="flex items-center gap-[8px] lg:gap-[10px]"
               >
                 <Location />
-                <p>{location}</p>
+                <p className="text-md xl:text-lg">{location}</p>
               </div>
             ))}
           </div>

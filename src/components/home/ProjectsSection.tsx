@@ -13,14 +13,12 @@ type ProjectCardProps = {
   index: number;
   name: string;
   description: string;
-  tags: { name: string; color: string }[];
   image: string;
 };
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
   name,
   description,
-  tags,
   image,
 }) => {
   return (
@@ -32,22 +30,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <p className="mt-2 text-section text-sm lg:text-lg max-w-[530px]">
           {description}
         </p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <p
-              key={`${name}-${tag.name}`}
-              className={`text-[14px] ${tag.color}`}
-            >
-              #{tag.name}
-            </p>
-          ))}
-        </div>
       </div>
 
       <div
         className="w-full lg:w-1/2 mt-5 lg:mt-0 mx-0 lg:mx-1 relative flex items-center justify-center rounded-3xl bg-cover bg-center p-4 lg:p-0 min-h-[246px] lg:h-[480px]"
         style={{
-          backgroundImage: `url(${process.env.PUBLIC_URL}/images/backgrounds/bg.png)`,
+          backgroundImage: `url(${process.env.PUBLIC_URL}/images/backgrounds/projects-bg.png)`,
         }}
       >
         <img src={image} alt="project_image" className="max-h-[380px] z-10" />

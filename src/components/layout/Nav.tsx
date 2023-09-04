@@ -38,7 +38,11 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      if (isMobileOpen) {
+      const totalScroll = window.scrollY + window.innerHeight;
+      const mobileMenuHeight =
+        document.getElementById("mobileMenu")?.offsetHeight || 0;
+
+      if (totalScroll > mobileMenuHeight) {
         setIsMobileOpen(false);
         setIsBlur(false);
       }
