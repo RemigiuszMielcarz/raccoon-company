@@ -80,7 +80,7 @@ const ProjectSection = () => {
   };
 
   return (
-    <section className="container bg-grey rounded-3xl pt-[50px]">
+    <div className="container bg-grey rounded-3xl pt-8 lg:pt-[50px]">
       <motion.div
         initial="hidden"
         animate="show"
@@ -114,7 +114,7 @@ const ProjectSection = () => {
           ))}
         </Slider>
       </div>
-    </section>
+    </div>
   );
 };
 
