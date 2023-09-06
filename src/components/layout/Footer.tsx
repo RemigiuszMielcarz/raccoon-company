@@ -12,8 +12,10 @@ import { ReactComponent as FlipicoLogo } from "../../images/icons/flipico.svg";
 import { ReactComponent as FlipicoAiLabsLogo } from "../../images/icons/flipicoailabs.svg";
 import { ReactComponent as Location } from "../../images/icons/location.svg";
 import { ReactComponent as Hook } from "../../images/icons/hook.svg";
+import WojciechSignature from "../../images/icons/wojciech-smola-sig.webp";
 import { projects } from "../../contstants";
 import styles from "../../scss/dropdown.module.scss";
+import Divider from "../Divider";
 
 const useWindowWidth = () => {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -107,8 +109,8 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="container flex flex-col bg-black text-white py-16">
-      <div className="container lg:px-0">
-        <div className="flex flex-col gap-6 lg:gap-0 lg:flex-row lg:justify-between mb-[32px] lg:mb-[137px]">
+      <div className="container lg:px-0 flex flex-col gap-8 lg:gap-12">
+        <div className="flex flex-col gap-6 lg:gap-0 lg:flex-row lg:justify-between">
           <div className="flex gap-[42px] lg:gap-[90px]">
             <FlipicoLogo />
             <FlipicoAiLabsLogo />
@@ -121,8 +123,15 @@ const Footer: React.FC = () => {
             ))}
           </div>
         </div>
-        <div className="grid lg:grid-cols-5 gap-8 xl:gap-6 mb-[60px]">
+        <Divider variant={"orange"} />
+        <div className="grid lg:grid-cols-5 gap-8 xl:gap-6">
           <div className="flex flex-col gap-[10px]">
+            <img
+              src={WojciechSignature}
+              height={50}
+              width={160}
+              alt="Wojciech's Signature"
+            />
             {Object.keys(companyItems[0]).map((key) => (
               <p
                 className={
@@ -160,7 +169,8 @@ const Footer: React.FC = () => {
             openItem={openItem}
           />
         </div>
-        <div className="flex lg:justify-between text-grey font-semibold mb-8 lg:mb-[60px]">
+        <Divider variant={"orange"} rotated={true} />
+        <div className="flex lg:justify-between text-grey font-semibold">
           <div className="grid grid-cols-2 xl:grid-cols-6 gap-10 xl:gap-14 gap-y-6">
             <p className="flex items-center text-m lg:text-lg whitespace-nowrap">
               Nasze lokalizacje
@@ -176,11 +186,17 @@ const Footer: React.FC = () => {
             ))}
           </div>
         </div>
+        <Divider variant={"orange"} />
+
         <div className="flex gap-4 lg:gap-0 flex-col lg:flex-row lg:justify-between text-menu text-sm">
-          <p>© Flipico & Flipico AI Labs 2023. Wszystkie prawa zastrzeżone.</p>
-          <div className="flex gap-4">
+          <div className="flex flex-col lg:flex-row">
+            <p>© Flipico & Flipico AI Labs 2023.</p>
+            &nbsp;
+            <p>Wszystkie prawa zastrzeżone.</p>
+          </div>
+          <div className="flex flex-col lg:flex-row gap-4">
             {resources.map((resource, index) => (
-              <a key={index} href={resource.route} className="">
+              <a key={index} href={resource.route}>
                 {resource.name}
               </a>
             ))}

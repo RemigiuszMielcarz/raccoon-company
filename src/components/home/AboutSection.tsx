@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { fadeIn, staggerContainer } from "../../utils/motion";
+import Divider from "../Divider";
 
 const AboutSection = () => {
   const stats = [
@@ -30,13 +31,15 @@ const AboutSection = () => {
         </p>
       </motion.div>
 
-      <motion.p className="mt-2 lg:mt-5 mb-8 lg:mb-10 text-display text-xl lg:text-xxxl font-medium">
+      <motion.p className="mt-2 mb-4 lg:my-5 text-display text-xl lg:text-xxxl font-medium">
         Dążymy do innowacji
       </motion.p>
 
+      <Divider variant={"grey"} />
+
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
-        className="mt-5 mb-8 lg:mb-15 text-md lg:text-lg text-section lg:w-1/2"
+        className="my-8 lg:mb-15 lg:mt-10 text-md lg:text-lg text-section lg:w-1/2"
       >
         <span className="text-display">Silna strategia</span>, która spełnia
         wymagania biznesowe i dokładna analiza danych są niezbędnymi elementami
@@ -47,7 +50,7 @@ const AboutSection = () => {
         Trochę Liczb o Nas
       </motion.p>
 
-      <div className="grid grid-cols-2 gap-4 lg:gap-5">
+      <div className="grid grid-cols-2 gap-4 lg:gap-5 lg:w-1/2">
         {stats.map((stat, index) => (
           <div key={index} className="rounded-[10px] bg-grey p-5">
             <p className="text-secondary lg:text-xxxl lg:leading-[50px] font-bold mb-[10px]">
