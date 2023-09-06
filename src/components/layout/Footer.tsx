@@ -12,6 +12,7 @@ import { ReactComponent as FlipicoLogo } from "../../images/icons/flipico.svg";
 import { ReactComponent as FlipicoAiLabsLogo } from "../../images/icons/flipicoailabs.svg";
 import { ReactComponent as Location } from "../../images/icons/location.svg";
 import { ReactComponent as Hook } from "../../images/icons/hook.svg";
+import { ReactComponent as Stars } from "../../images/icons/stars.svg";
 import WojciechSignature from "../../images/icons/wojciech-smola-sig.webp";
 import { projects } from "../../contstants";
 import styles from "../../scss/dropdown.module.scss";
@@ -188,11 +189,19 @@ const Footer: React.FC = () => {
         </div>
         <Divider variant={"orange"} />
 
-        <div className="flex gap-4 lg:gap-0 flex-col lg:flex-row lg:justify-between text-menu text-sm">
-          <div className="flex flex-col lg:flex-row">
-            <p>© Flipico & Flipico AI Labs 2023.</p>
-            &nbsp;
-            <p>Wszystkie prawa zastrzeżone.</p>
+        <div className="flex gap-4 lg:gap-0 flex-col lg:flex-row lg:justify-between text-menu text-md lg:text-sm">
+          <div className="flex flex-col-reverse lg:flex-row gap-4 lg:gap-0 xl:gap-16">
+            <div className="flex flex-col lg:flex-row">
+              <p>© Flipico & Flipico AI Labs 2023. &nbsp;</p>
+              <p>Wszystkie prawa zastrzeżone.</p>
+            </div>
+            <div className="flex items-center">
+              <div className="w-[100px] lg:w-[125px]">
+                <Stars />
+              </div>
+              <p className="font-bold ml-2 lg:ml-[10px]">5.0</p>
+              <p className="ml-5 whitespace-nowrap">Na podstawie 12 recenzji</p>
+            </div>
           </div>
           <div className="flex flex-col lg:flex-row gap-4">
             {resources.map((resource, index) => (
