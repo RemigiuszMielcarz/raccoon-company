@@ -5,6 +5,7 @@ export const projects = [
     name: "Wolf & Owl",
     description:
       "Firma w bardzo szybki sposób zdominowała lokalny rynek nieruchomości dzięki stronie internetowej oraz skutecznej reklamie lokalnej, zdobywając tylko w pierwszym miesiącu działalności ponad 100 ogłoszeń.",
+    tag: "Nieruchomości",
     image: wolfowl,
     source_code_link: "https://github.com/artProjects2019/ProjectAR",
   },
@@ -12,6 +13,7 @@ export const projects = [
     name: "Almet",
     description:
       "Lider w branży gięcia drutu gładkiego i żebrowanego oraz spawania i zgrzewania.",
+    tag: "Budownictwo",
     image: wolfowl,
     source_code_link: "https://github.com/RemigiuszMielcarz/Engineering-thesis",
   },
@@ -19,6 +21,7 @@ export const projects = [
     name: "Allegro Univeristy",
     description:
       "Website for sales training courses about entire functionality of the Allegro website. My first private commercial assignment.",
+    tag: "E-commerce",
     image: wolfowl,
     source_code_link: "https://github.com/",
   },
@@ -26,6 +29,7 @@ export const projects = [
     name: "LEMA Group",
     description:
       "Website that is purely informative about client's activities with trade. Added German language.",
+    tag: "E-commerce",
     image: wolfowl,
     source_code_link: "https://lema.group/",
   },

@@ -13,21 +13,24 @@ type ProjectCardProps = {
   index: number;
   name: string;
   description: string;
+  tag: string;
   image: string;
 };
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
   name,
   description,
+  tag,
   image,
 }) => {
   return (
     <div className="flex flex-col-reverse lg:flex-row lg:items-center pb-[50px]">
       <div className="w-full pt-4 lg:pt-0 pb-16 lg:pb-0 md:w-1/2 h-full relative">
-        <h3 className="text-display text-sm lg:text-[50px] lg:leading-[50px]">
-          {name}
-        </h3>
-        <p className="mt-2 text-section text-sm lg:text-lg max-w-[530px]">
+        <h2 className="uppercase text-secondary font-semibold text-md">
+          {tag}
+        </h2>
+        <h1 className="mt-2 lg:mt-5text-display text-lg lg:text-xxl">{name}</h1>
+        <p className="mt-4 lg:mt-5 text-section text-md lg:text-lg max-w-[530px]">
           {description}
         </p>
       </div>
@@ -102,13 +105,10 @@ const ProjectSection = () => {
         </motion.p>
       </div>
 
-      <div className={styles.projects}>
+      <div className={`${styles.projects} mt-[32px] lg:mt-[60px]`}>
         <Slider {...settings}>
           {projects.map((project, index) => (
-            <motion.div
-              className="mt-[32px] lg:mt-[60px]"
-              key={`project-slider-${index}`}
-            >
+            <motion.div key={`project-slider-${index}`}>
               <ProjectCard index={index} {...project} />
             </motion.div>
           ))}
