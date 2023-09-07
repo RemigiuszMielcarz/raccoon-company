@@ -19,15 +19,13 @@ const Button: React.FC<ButtonType> = ({ text, route, variant, icon: Icon }) => {
 
   const buttonClass =
     variant === "orange"
-      ? "w-[full] text-body px-5 [border:none] bg-orange rounded-3xl h-full flex items-center justify-center"
-      : "w-[full] text-display px-5 [border:none] bg-body rounded-3xl h-full flex items-center justify-center";
+      ? "w-[full] text-body p-[10px] [border:none] bg-secondary rounded-3xl h-full flex items-center justify-center"
+      : "w-[full] text-display p-[10px] [border:none] bg-body rounded-3xl h-full flex items-center justify-center";
 
   return (
     <button className={buttonClass} autoFocus onClick={onFrameClick}>
       {Icon && <Icon style={{ marginRight: "10px" }} />}
-      <b className="text-base tracking-[0.3px] leading-[20px] text-center">
-        {text}
-      </b>
+      <b className="text-md lg:text-sm text-center">{text}</b>
     </button>
   );
 };

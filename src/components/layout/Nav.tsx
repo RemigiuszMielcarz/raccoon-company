@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { navRoutes } from "./data";
 import { fadeInOut } from "../../utils/motion";
 import { ReactComponent as FlipicoLogo } from "../../images/icons/flipico.svg";
-import { ReactComponent as AddIcon } from "../../images/icons/add.svg";
+import { ReactComponent as AddIcon } from "../../images/icons/addOrange.svg";
 
 const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
   setIsBlur,
@@ -37,15 +37,18 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const totalScroll = window.scrollY + window.innerHeight;
-      const mobileMenuHeight =
-        document.getElementById("mobileMenu")?.offsetHeight || 0;
+    let lastScrollTop = 0; // Wartość początkowa
 
-      if (totalScroll > mobileMenuHeight) {
+    const handleScroll = () => {
+      const threshold = 100; // Ilość pikseli przewinięcia, po której menu zostanie ukryte
+      const st = window.scrollY || document.documentElement.scrollTop;
+
+      if (Math.abs(st - lastScrollTop) > threshold) {
         setIsMobileOpen(false);
         setIsBlur(false);
       }
+
+      lastScrollTop = st <= 0 ? 0 : st;
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -66,7 +69,7 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
       animate="show"
       variants={fadeInOut(0, 0.5)}
     >
-      <Link to="/" className="flex items-center">
+      <Link to="/" className="flex items-center z-20">
         <FlipicoLogo />
       </Link>
       <div className="hidden xl:flex gap-[50px] items-center bg-white px-[36px] rounded-3xl">
@@ -97,7 +100,7 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
           <Button variant="white" text="Wyceń projekt" icon={AddIcon} />
         </div>
 
-        <div className="xl:hidden flex items-center justify-center w-[40px] h-[40px] rounded-full bg-white">
+        <div className="xl:hidden flex items-center justify-center w-[40px] h-[40px] rounded-full bg-white z-20">
           {isMobileOpen ? (
             <img
               src="/icons/close.svg"
@@ -120,7 +123,6 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
         <AnimatePresence>
           {isMobileOpen && (
             <MobileMenu
-              isOpen={isMobileOpen}
               onClose={toggleMobileMenu}
               data={navRoutes}
               setIsBlur={setIsBlur}

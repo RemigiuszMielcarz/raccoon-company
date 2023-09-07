@@ -3,9 +3,11 @@ import { motion } from "framer-motion";
 import { fadeInOut } from "../../utils/motion";
 import { ReactComponent as Hook } from "../../images/icons/hook.svg";
 import styles from "../../scss/dropdown.module.scss";
+import Button from "../Button";
+import { ReactComponent as AddIcon } from "../../images/icons/addWhite.svg";
+import { ReactComponent as AuditIcon } from "../../images/icons/audit.svg";
 
 interface MobileMenuProps {
-  isOpen: boolean;
   onClose: () => void;
   data: {
     name: string;
@@ -16,7 +18,6 @@ interface MobileMenuProps {
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({
-  isOpen,
   onClose,
   data,
   setIsBlur,
@@ -38,10 +39,15 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
       initial="hidden"
       animate="show"
       exit="hidden"
-      className={`absolute top-[80px] left-0 w-full h-fit transform transition-transform duration-300 z-10 font-semibold pb-10
-                ${isOpen ? "scale-y-100" : "scale-y-0 origin-top"}`}
+      className={`bg-black absolute top-[-16px] left-0 w-full transform transition-transform duration-300 z-10 font-semibold pb-8
+      ${expandedService ? "h-max" : "h-screen"}`}
+      // style={{
+      //   backgroundImage: `url(${process.env.PUBLIC_URL}/images/backgrounds/mobile-menu.webp)`,
+      //   backgroundPosition: "center",
+      //   backgroundRepeat: "no-repeat",
+      // }}
     >
-      <div className="container px-[16px] flex flex-col">
+      <div className="container px-[16px] pt-20 flex flex-col gap-16">
         <div className="flex flex-col gap-8">
           {data.map((item, index) => (
             <div key={index}>
@@ -96,6 +102,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               )}
             </div>
           ))}
+        </div>
+        <div className="flex gap-4 justify-center">
+          <Button variant={"orange"} text={"Wyceń Projekt"} icon={AddIcon} />
+          <Button variant={"white"} text={"Darmowy audyt"} icon={AuditIcon} />
         </div>
       </div>
     </motion.div>
