@@ -30,3 +30,30 @@ export const projects = [
     source_code_link: "https://lema.group/",
   },
 ];
+
+export const testimonials = [
+  {
+    description:
+      "Chłopaki doskonale wiedzą co robią. Rozmowy i dobieranie odpowiednich technologii przebiegły bardzo sprawnie. Profesjonalnie zaprojektowali nową stronę naszego serwisu, wdrożyli panel CMS do zarządzania treścią, użyli AI do filtrowania komentarzy. Liczba odwiedzin serwisu wzrosła o 37%.",
+    author: {
+      name: "Tomasz Kuriata",
+      position: "Współwłaściciel Doba.pl",
+    },
+  },
+  {
+    description:
+      "Strona na Webflow z indywidualnym projektem graficznym działa świetnie, szkolenie z obsługi CMS pokrywało wszystkie niezbędne kwestie w sposób bardzo przejrzysty. Dzięki temu technologicznie wyprzedziliśmy całą lokalną konkurencję biur nieruchomości. Polecam.",
+    author: {
+      name: "Oskar Ślósarz",
+      position: "Współwłaściciel Wolf & Owl Real Estate",
+    },
+  },
+  {
+    description:
+      "Od 3 lat zajmują się prowadzeniem moich marketplace. Obsługę wszystkich aukcji i zamówień mam w jednym miejscu. Teraz dodatkowo pomogli wprowadzić moje produkty na rynki zagraniczne w formie Fulfillmentu na Amazon FBA w Niemczech, Francji, Holandii, Włoszech, Belgii i Austrii.",
+    author: {
+      name: "Andrzej Smoła",
+      position: "Właściciel marki grawerniaddz",
+    },
+  },
+];
