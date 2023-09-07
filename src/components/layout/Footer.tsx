@@ -34,8 +34,9 @@ const useWindowWidth = () => {
 interface FooterSectionProps {
   title?: string;
   items: { name: string; route?: string }[];
-  onToggle: (title: string) => void;
-  openItem: string | null;
+  onToggle?: (title: string) => void;
+  openItem?: string | null;
+  extraPadding?: boolean;
 }
 
 const FooterSection: React.FC<FooterSectionProps> = ({
@@ -43,25 +44,30 @@ const FooterSection: React.FC<FooterSectionProps> = ({
   items,
   onToggle,
   openItem,
+  extraPadding,
 }) => {
   const windowWidth = useWindowWidth();
 
   const handleToggle = () => {
-    if (windowWidth < 1024 && title) {
-      onToggle(title);
+    if (windowWidth < 1280 && title) {
+      if (onToggle) {
+        onToggle(title);
+      }
     }
   };
 
-  const shouldShowHook = windowWidth < 1024;
+  const shouldShowHook = windowWidth < 1280;
   const isOpen = openItem === title;
 
   return (
-    <div className="flex flex-col lg:pt-5">
+    <div
+      className={`flex flex-col xl:pt-5 ${extraPadding ? "xl:pt-[50px]" : ""}`}
+    >
       <div
         className="flex justify-between cursor-pointer"
         onClick={handleToggle}
       >
-        <p className="text-grey cursor-pointer font-semibold text-m lg:text-lg">
+        <p className="text-grey cursor-pointer font-semibold text-m xl:text-lg">
           {title}
         </p>
         {shouldShowHook && (
@@ -69,7 +75,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({
         )}
       </div>
       <ul
-        className={`list-none flex flex-col gap-6 lg:gap-[10px] ${
+        className={`list-none flex flex-col gap-6 xl:gap-[10px] ${
           !shouldShowHook || isOpen
             ? `${styles.expanded}`
             : `${styles.collapsed}`
@@ -78,17 +84,17 @@ const FooterSection: React.FC<FooterSectionProps> = ({
         {items.map((item, index) => (
           <li
             key={index}
-            className={`${index === 0 ? "mt-8 lg:mt-[10px]" : ""}`}
+            className={`${index === 0 ? "mt-8 xl:mt-[10px]" : ""}`}
           >
             {item.route ? (
               <a
                 href={item.route}
-                className="text-md lg:text-sm text-menu whitespace-nowrap"
+                className="text-md xl:text-sm text-menu whitespace-nowrap"
               >
                 {item.name}
               </a>
             ) : (
-              <span className="text-md lg:text-sm text-menu whitespace-nowrap">
+              <span className="text-md xl:text-sm text-menu whitespace-nowrap">
                 {item.name}
               </span>
             )}
@@ -101,6 +107,12 @@ const FooterSection: React.FC<FooterSectionProps> = ({
 
 const Footer: React.FC = () => {
   const [openItem, setOpenItem] = useState<string | null>(null);
+  const windowWidth = useWindowWidth();
+  const isXL = windowWidth >= 1280;
+
+  const halfLength = Math.ceil(services.length / 2);
+  const firstHalfServices = services.slice(0, halfLength);
+  const secondHalfServices = services.slice(halfLength);
 
   const onToggle = (title: string) => {
     if (openItem === title) {
@@ -113,13 +125,13 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-black">
       <div className="container flex flex-col text-white py-16">
-        <div className="container lg:px-0 flex flex-col gap-8 lg:gap-12">
-          <div className="flex flex-col gap-6 lg:gap-0 lg:flex-row lg:justify-between">
-            <div className="flex gap-[42px] lg:gap-[90px]">
+        <div className="container xl:px-0 flex flex-col gap-8 xl:gap-12">
+          <div className="flex flex-col gap-6 xl:gap-0 xl:flex-row xl:justify-between">
+            <div className="flex gap-[42px] xl:gap-[90px]">
               <FlipicoLogo />
               <FlipicoAiLabsLogo />
             </div>
-            <div className="flex justify-between lg:gap-[30px]">
+            <div className="flex justify-between xl:gap-[30px]">
               {socialMedia.map((media, index) => (
                 <a key={index} href={media.route}>
                   <img src={media.icon} alt={media.name} />
@@ -128,7 +140,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
           <Divider variant={"orange"} />
-          <div className="grid xl:grid-cols-5 gap-8 xl:gap-5">
+          <div className="grid xl:grid-cols-6 gap-8 xl:gap-5">
             <div className="flex flex-col gap-[10px]">
               <img
                 src={WojciechSignature}
@@ -140,20 +152,32 @@ const Footer: React.FC = () => {
                 <p
                   className={
                     key === "tel" || key === "email"
-                      ? "text-secondary text-md lg:text-sm"
-                      : "text-menu text-md lg:text-sm"
+                      ? "text-secondary text-md xl:text-sm"
+                      : "text-menu text-md xl:text-sm"
                   }
                 >
                   {companyItems[0][key as keyof (typeof companyItems)[0]]}
                 </p>
               ))}
             </div>
-            <FooterSection
-              title="Oferta"
-              items={services}
-              onToggle={onToggle}
-              openItem={openItem}
-            />
+            {isXL ? (
+              <>
+                <FooterSection
+                  title="Oferta"
+                  items={firstHalfServices}
+                  onToggle={onToggle}
+                  openItem={openItem}
+                />
+                <FooterSection items={secondHalfServices} extraPadding={true} />
+              </>
+            ) : (
+              <FooterSection
+                title="Oferta"
+                items={services}
+                onToggle={onToggle}
+                openItem={openItem}
+              />
+            )}
             <FooterSection
               title="Portfolio"
               items={projects.map((project) => ({ name: project.name }))}
