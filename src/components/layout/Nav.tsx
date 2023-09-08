@@ -40,7 +40,7 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
     let lastScrollTop = 0; // Wartość początkowa
 
     const handleScroll = () => {
-      const threshold = 100; // Ilość pikseli przewinięcia, po której menu zostanie ukryte
+      const threshold = 40; // Ilość pikseli przewinięcia, po której menu zostanie ukryte
       const st = window.scrollY || document.documentElement.scrollTop;
 
       if (Math.abs(st - lastScrollTop) > threshold) {

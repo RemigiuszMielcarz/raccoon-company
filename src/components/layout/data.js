@@ -36,10 +36,6 @@ export const services = [
 
 export const navRoutes = [
   {
-    name: "Strona główna",
-    route: "/",
-  },
-  {
     name: "Usługi",
     route: "/services",
     subRoutes: services,
