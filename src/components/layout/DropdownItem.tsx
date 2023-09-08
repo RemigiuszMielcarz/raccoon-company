@@ -53,7 +53,7 @@ const DropdownItem: React.FC<DropdownItemProps> = ({
             animate="visible"
             exit="exit"
             variants={dropdownVariants}
-            className="absolute lg:w-max -left-[525px] top-[60px] bg-white border-0 rounded-3xl z-10"
+            className="absolute lg:w-max -left-[455px] top-[60px] bg-white border-0 rounded-3xl z-10"
           >
             <div className="w-max grid grid-cols-6 whitespace-nowrap gap-5 p-[20px]">
               {data.map((item: Service, index: number) => (
