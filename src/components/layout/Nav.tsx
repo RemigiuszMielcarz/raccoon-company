@@ -14,6 +14,7 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
 }) => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [expandedService, setExpandedService] = useState<string | null>(null);
 
   const handleOpenDropdown = (name: string) => {
     setOpenDropdown(name);
@@ -37,13 +38,13 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
   }, []);
 
   useEffect(() => {
-    let lastScrollTop = 0; // Wartość początkowa
+    let lastScrollTop = 0;
 
     const handleScroll = () => {
-      const threshold = 40; // Ilość pikseli przewinięcia, po której menu zostanie ukryte
       const st = window.scrollY || document.documentElement.scrollTop;
+      const threshold = expandedService ? 500 : 200;
 
-      if (Math.abs(st - lastScrollTop) > threshold) {
+      if (st > threshold) {
         setIsMobileOpen(false);
         setIsBlur(false);
       }
@@ -56,7 +57,7 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [isMobileOpen, setIsBlur]);
+  }, [isMobileOpen, setIsBlur, expandedService]);
 
   const toggleMobileMenu = () => {
     setIsMobileOpen(!isMobileOpen);
@@ -126,6 +127,8 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
               onClose={toggleMobileMenu}
               data={navRoutes}
               setIsBlur={setIsBlur}
+              expandedService={expandedService}
+              setExpandedService={setExpandedService}
             />
           )}
         </AnimatePresence>

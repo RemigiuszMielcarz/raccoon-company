@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { fadeInOut } from "../../utils/motion";
 import { ReactComponent as Hook } from "../../images/icons/hook.svg";
@@ -15,15 +15,17 @@ interface MobileMenuProps {
     subRoutes?: { name: string; route: string; icon: string }[];
   }[];
   setIsBlur: (value: boolean) => void;
+  expandedService: string | null;
+  setExpandedService: (value: string | null) => void;
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({
   onClose,
   data,
   setIsBlur,
+  expandedService,
+  setExpandedService,
 }) => {
-  const [expandedService, setExpandedService] = useState<string | null>(null);
-
   const toggleServiceExpansion = (serviceName: string) => {
     if (expandedService === serviceName) {
       setExpandedService(null);

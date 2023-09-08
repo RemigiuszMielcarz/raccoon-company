@@ -11,7 +11,7 @@ const ScrollToTopButton: React.FC = () => {
   };
 
   const handleScroll = () => {
-    if (window.scrollY > 200) {
+    if (window.scrollY > 700) {
       controls.start("show");
     } else {
       controls.start("hidden");
