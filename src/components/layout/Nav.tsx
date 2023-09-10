@@ -44,9 +44,10 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
       const st = window.scrollY || document.documentElement.scrollTop;
       const threshold = expandedService ? 500 : 200;
 
-      if (st > threshold) {
+      if (isMobileOpen && st > threshold) {
         setIsMobileOpen(false);
         setIsBlur(false);
+        setExpandedService(null);
       }
 
       lastScrollTop = st <= 0 ? 0 : st;
@@ -62,7 +63,11 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
   const toggleMobileMenu = () => {
     setIsMobileOpen(!isMobileOpen);
     setIsBlur(!isMobileOpen);
+    if (isMobileOpen) {
+      setExpandedService(null);
+    }
   };
+
   return (
     <motion.nav
       className="absolute left-0 right-0 z-10 container px-4 lg:px-[50px] mt-[8px] lg:mt-[20px] h-[50px] flex justify-between"
