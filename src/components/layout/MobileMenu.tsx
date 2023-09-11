@@ -105,7 +105,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 h-[40px]">
           <Button variant={"orange"} text={"Wyceń Projekt"} icon={AddIcon} />
           <Button variant={"white"} text={"Darmowy audyt"} icon={AuditIcon} />
         </div>
