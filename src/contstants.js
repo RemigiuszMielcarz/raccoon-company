@@ -38,7 +38,7 @@ export const projects = [
 export const testimonials = [
   {
     description:
-      "Chłopaki doskonale wiedzą co robią. Rozmowy i dobieranie odpowiednich technologii przebiegły bardzo sprawnie. Profesjonalnie zaprojektowali nową stronę naszego serwisu, wdrożyli panel CMS do zarządzania treścią, użyli AI do filtrowania komentarzy. Liczba odwiedzin serwisu wzrosła o 37%.",
+      "Chłopaki doskonale wiedzą co robią. Rozmowy i dobieranie odpowiednich technologii przebiegły bardzo sprawnie. Profesjonalnie zaprojektowali nową stronę naszego serwisu, wdrożyli panel CMS do zarządzania treścią, użyli AI do filtrowania komentarzy. Liczba odwiedzin serwisu wzrosła o 37%.",
     author: {
       name: "Tomasz Kuriata",
       position: "Współwłaściciel Doba.pl",
@@ -54,7 +54,7 @@ export const testimonials = [
   },
   {
     description:
-      "Od 3 lat zajmują się prowadzeniem moich marketplace. Obsługę wszystkich aukcji i zamówień mam w jednym miejscu. Teraz dodatkowo pomogli wprowadzić moje produkty na rynki zagraniczne w formie Fulfillmentu na Amazon FBA w Niemczech, Francji, Holandii, Włoszech, Belgii i Austrii.",
+      "Od 3 lat zajmują się prowadzeniem moich marketplace. Obsługę wszystkich aukcji i zamówień mam w jednym miejscu. Teraz dodatkowo pomogli wprowadzić moje produkty na rynki zagraniczne w formie Fulfillmentu na Amazon FBA w Niemczech, Francji, Holandii, Włoszech, Belgii i Austrii.",
     author: {
       name: "Andrzej Smoła",
       position: "Właściciel marki grawerniaddz",

@@ -5,11 +5,12 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
+import Layout from "./components/layout";
 import Home from "./pages/Home";
+import Web from "./pages/Web";
 import AboutUs from "./pages/AboutUs";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
-import Layout from "./components/layout";
 
 function App() {
   const action = useNavigationType();
@@ -43,6 +44,10 @@ function App() {
         title = "";
         metaDescription = "";
         break;
+      case "/web":
+        title = "";
+        metaDescription = "";
+        break;
     }
 
     if (title) {
@@ -63,6 +68,7 @@ function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/web" element={<Web />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/about-us" element={<AboutUs />} />
