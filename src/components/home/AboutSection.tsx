@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import { fadeIn, staggerContainer } from "../../utils/motion";
 import Divider from "../Divider";
+import { SectionWrapper } from "../../hoc";
 
 const AboutSection = () => {
   const stats = [
@@ -26,12 +27,18 @@ const AboutSection = () => {
         animate="show"
         variants={staggerContainer(0.1)}
       >
-        <p className="text-md lg:text-title text-section font-semibold">
+        <motion.p
+          variants={fadeIn("", "", 0.1, 1)}
+          className="text-md lg:text-title text-section font-semibold"
+        >
           02 - O Nas
-        </p>
+        </motion.p>
       </motion.div>
 
-      <motion.p className="mt-2 mb-4 lg:my-5 text-display text-xl lg:text-xxxl font-medium">
+      <motion.p
+        variants={fadeIn("", "", 0.1, 1)}
+        className="mt-2 mb-4 lg:my-5 text-display text-xl lg:text-xxxl font-medium"
+      >
         Dążymy do innowacji
       </motion.p>
 
@@ -53,12 +60,18 @@ const AboutSection = () => {
       <div className="grid grid-cols-2 gap-4 lg:gap-5 lg:w-1/2">
         {stats.map((stat, index) => (
           <div key={index} className="rounded-[10px] bg-grey p-5">
-            <p className="text-secondary lg:text-xxxl lg:leading-[50px] font-bold mb-[10px]">
+            <motion.p
+              variants={fadeIn("", "", 0.1, 1)}
+              className="text-secondary lg:text-xxxl lg:leading-[50px] font-bold mb-[10px]"
+            >
               {stat.number}
-            </p>
-            <p className="text-display text-m font-medium">
+            </motion.p>
+            <motion.p
+              variants={fadeIn("", "", 0.1, 1)}
+              className="text-display text-m font-medium"
+            >
               {stat.description}
-            </p>
+            </motion.p>
           </div>
         ))}
       </div>
@@ -66,4 +79,4 @@ const AboutSection = () => {
   );
 };
 
-export default AboutSection;
+export default SectionWrapper(AboutSection, "about");

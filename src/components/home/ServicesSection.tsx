@@ -44,9 +44,12 @@ const ServicesSection = () => {
           animate="show"
           variants={staggerContainer(0.1)}
         >
-          <p className="text-md lg:text-title text-section font-semibold">
+          <motion.p
+            variants={fadeIn("", "", 0.1, 1)}
+            className="text-md lg:text-title text-section font-semibold"
+          >
             01 - Nasze Usługi
-          </p>
+          </motion.p>
         </motion.div>
         <div className="w-full">
           <motion.p
@@ -74,7 +77,12 @@ const ServicesSection = () => {
             className="text-display flex flex-col gap-1 service-gradient justify-center items-center py-5 px-4 rounded-[4px] lg:rounded-[10px]"
           >
             <img height="40px" src={item.icon} alt={item.name} />
-            <p className="text-xss xl:text-m font-semibold">{item.name}</p>
+            <motion.p
+              variants={fadeIn("", "", 0.1, 1)}
+              className="text-xss xl:text-m font-semibold"
+            >
+              {item.name}
+            </motion.p>
           </Link>
         ))}
       </div>
