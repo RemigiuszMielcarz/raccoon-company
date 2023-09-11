@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 type ButtonType = {
-  variant: "orange" | "white";
+  variant: "orange" | "white" | "gradient";
   text: string;
   route?: string;
   icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
@@ -17,15 +17,21 @@ const Button: React.FC<ButtonType> = ({ text, route, variant, icon: Icon }) => {
     }
   }, [navigate, route]);
 
-  const buttonClass =
-    variant === "orange"
-      ? "w-[full] text-body p-[10px] lg:py-[15px] lg:px-5 [border:none] bg-secondary rounded-3xl h-full flex items-center justify-center"
-      : "w-[full] text-display p-[10px] lg:py-[15px] lg:px-5 [border:none] bg-body rounded-3xl h-full flex items-center justify-center";
+  const baseClasses =
+    "w-full text-center p-2.5 lg:py-[15px] lg:px-5 border-none rounded-3xl h-full flex items-center justify-center";
+
+  const variantClasses = {
+    orange: "text-body bg-secondary",
+    white: "text-display bg-white",
+    gradient: "text-display button-gradient",
+  };
+
+  const buttonClass = `${baseClasses} ${variantClasses[variant]}`;
 
   return (
     <button className={buttonClass} autoFocus onClick={onFrameClick}>
-      {Icon && <Icon style={{ marginRight: "10px" }} />}
-      <b className="text-md lg:text-sm text-center">{text}</b>
+      {Icon && <Icon className="mr-2.5" />}
+      <span className="font-semibold text-md lg:text-sm">{text}</span>
     </button>
   );
 };

@@ -15,6 +15,9 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [expandedService, setExpandedService] = useState<string | null>(null);
+  const [isXlScreen, setIsXlScreen] = useState(
+    window.matchMedia("(min-width: 1280px)").matches,
+  );
 
   const handleOpenDropdown = (name: string) => {
     setOpenDropdown(name);
@@ -26,8 +29,9 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
 
   useEffect(() => {
     const checkScreenSize = () => {
-      const isXlScreen = window.matchMedia("(min-width: 1280px)").matches;
-      if (isXlScreen) {
+      const isXl = window.matchMedia("(min-width: 1280px)").matches;
+      setIsXlScreen(isXl);
+      if (isXl) {
         setIsMobileOpen(false);
       }
     };
@@ -70,7 +74,7 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
 
   return (
     <motion.nav
-      className="absolute left-0 right-0 z-10 container px-4 lg:px-[50px] mt-[8px] lg:mt-[20px] flex justify-between"
+      className="absolute left-0 right-0 z-10 container px-4 lg:px-[50px] lg:pr-[20px] mt-[8px] lg:mt-[20px] flex justify-between"
       initial="hidden"
       animate="show"
       variants={fadeInOut(0, 0.5)}
@@ -103,10 +107,14 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
       </div>
       <div className="flex gap-4">
         <div className="xl:flex items-center">
-          <Button variant="white" text="Wyceń projekt" icon={AddIcon} />
+          <Button
+            variant={isXlScreen ? "white" : "gradient"}
+            text="Wyceń projekt"
+            icon={AddIcon}
+          />
         </div>
 
-        <div className="xl:hidden flex items-center justify-center w-[40px] h-[40px] rounded-full bg-white z-20">
+        <div className="xl:hidden flex items-center justify-center w-[40px] h-[40px] rounded-full mobile-icon-gradient z-20">
           {isMobileOpen ? (
             <img
               src="/icons/close.svg"

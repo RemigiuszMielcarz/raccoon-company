@@ -71,7 +71,7 @@ const ServicesSection = () => {
           <Link
             to={item.route}
             key={index}
-            className="text-display flex flex-col gap-1 bg-grey justify-center items-center py-5 px-4 rounded-[10px]"
+            className="text-display flex flex-col gap-1 service-gradient justify-center items-center py-5 px-4 rounded-[4px] lg:rounded-[10px]"
           >
             <img height="40px" src={item.icon} alt={item.name} />
             <p className="text-xss xl:text-m font-semibold">{item.name}</p>
