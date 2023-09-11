@@ -150,6 +150,7 @@ const Footer: React.FC = () => {
               />
               {Object.keys(companyItems[0]).map((key) => (
                 <p
+                  key={key}
                   className={
                     key === "tel" || key === "email"
                       ? "text-secondary text-md xl:text-sm"

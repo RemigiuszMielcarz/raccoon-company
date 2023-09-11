@@ -116,7 +116,7 @@ const TestimonialsSection = () => {
       <div className={`${styles.testimonials} mt-8 lg:mt-15`}>
         <Slider {...settings}>
           {testimonials.map((testimonial, index) => (
-            <motion.div>
+            <motion.div key={index}>
               <TestimonialsCard key={index} {...testimonial} />
             </motion.div>
           ))}
