@@ -68,12 +68,12 @@ const IntroSection: React.FC = () => {
             ></span>
           </p>
           <Divider variant={"grey"} />
-          <div className="flex gap-4 items-center">
+          <div className="grid grid-cols-[auto,1fr] gap-4 items-center">
             <div className="flex items-center gap-[10px] p-[10px] rounded-[20px] bg-white">
-              <div className="w-[100px]">
-                <Stars />
-              </div>
-              <p className="font-bold text-title text-display">5.0</p>
+              <Stars className="w-[100px] h-[20px]" />
+              <p className="font-bold text-title text-display tracking-base">
+                5.0
+              </p>
             </div>
             <p className="text-md lg:text-lg text-white">
               Nasi Klienci kochają współpracę z nami

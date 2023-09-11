@@ -70,7 +70,7 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
 
   return (
     <motion.nav
-      className="absolute left-0 right-0 z-10 container px-4 lg:px-[50px] mt-[8px] lg:mt-[20px] h-[50px] flex justify-between"
+      className="absolute left-0 right-0 z-10 container px-4 lg:px-[50px] mt-[8px] lg:mt-[20px] flex justify-between"
       initial="hidden"
       animate="show"
       variants={fadeInOut(0, 0.5)}
@@ -101,8 +101,8 @@ const Nav: React.FC<{ setIsBlur: (value: boolean) => void }> = ({
           ),
         )}
       </div>
-      <div className="flex gap-5">
-        <div className="hidden xl:flex items-center ">
+      <div className="flex gap-4">
+        <div className="xl:flex items-center">
           <Button variant="white" text="Wyceń projekt" icon={AddIcon} />
         </div>
 
