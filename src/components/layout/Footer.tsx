@@ -198,21 +198,19 @@ const Footer: React.FC = () => {
             />
           </div>
           <Divider variant={"orange"} rotated={true} />
-          <div className="flex lg:justify-between text-grey font-semibold">
-            <div className="grid grid-cols-2 xl:grid-cols-6 gap-10 xl:gap-14 gap-y-6">
-              <p className="flex items-center text-m lg:text-lg whitespace-nowrap">
-                Nasze lokalizacje
-              </p>
-              {locations.map((location, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-[8px] lg:gap-[10px]"
-                >
-                  <Location />
-                  <p className="text-md xl:text-lg">{location}</p>
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-2 xl:grid-cols-6 gap-10 xl:gap-5 gap-y-6 text-grey font-semibold">
+            <p className="flex items-center text-m lg:text-lg whitespace-nowrap">
+              Nasze lokalizacje
+            </p>
+            {locations.map((location, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-[8px] lg:gap-[10px]"
+              >
+                <Location className="h-[20px] lg:h-[30px]" />
+                <p className="text-md xl:text-lg">{location}</p>
+              </div>
+            ))}
           </div>
           <Divider variant={"orange"} />
           <div className="flex gap-4 lg:gap-0 flex-col lg:flex-row lg:justify-between text-menu text-md lg:text-sm">
