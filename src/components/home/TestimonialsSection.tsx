@@ -35,12 +35,29 @@ const TestimonialsCard: React.FC<TestimonialsCardProps> = ({
   );
 };
 
-const TestimonialsSection = () => {
-  const stats = [
+const Stats: React.FC = () => {
+  const statsData = [
     { number: "12", description: "zweryfikowanych opinii" },
     { number: "5.0", description: "średnia ocena" },
   ];
 
+  return (
+    <div className="mt-8 lg:mt-15 flex justify-between mb-4 lg:mb-5">
+      <div className="flex flex-col lg:flex-row gap-4 lg:gap-20">
+        {statsData.map((stat, index) => (
+          <div key={index} className="flex items-end font-bold gap-4">
+            <p className="text-secondary text-xxxl leading-[50px]">
+              {stat.number}
+            </p>
+            <p className="text-display text-m lg:pb-1">{stat.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const TestimonialsSection = () => {
   function PrevArrow(props: {
     style?: React.CSSProperties;
     onClick?: MouseEventHandler;
@@ -98,18 +115,7 @@ const TestimonialsSection = () => {
         </motion.p>
       </div>
 
-      <div className="mt-8 lg:mt-15 flex justify-between mb-4 lg:mb-5">
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap-20">
-          {stats.map((stat, index) => (
-            <div key={index} className="flex items-end font-bold gap-4">
-              <p className="text-secondary text-xxxl leading-[50px]">
-                {stat.number}
-              </p>
-              <p className="text-display text-m lg:pb-1">{stat.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+      <Stats />
 
       <Divider variant={"grey"} />
 
