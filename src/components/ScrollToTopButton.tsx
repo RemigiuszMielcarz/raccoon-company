@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import Arrow from "./icons/Arrow";
 import { motion, useAnimation } from "framer-motion";
 import { fadeInOut } from "../utils/motion";
@@ -10,13 +10,13 @@ const ScrollToTopButton: React.FC = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     if (window.scrollY > 700) {
       controls.start("show");
     } else {
       controls.start("hidden");
     }
-  };
+  }, [controls]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
