@@ -11,6 +11,7 @@ import Web from "./pages/Web";
 import AboutUs from "./pages/AboutUs";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
+import NotFound from "./NotFound";
 
 function App() {
   const action = useNavigationType();
@@ -72,6 +73,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/about-us" element={<AboutUs />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
   );

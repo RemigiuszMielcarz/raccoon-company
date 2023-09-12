@@ -18,7 +18,7 @@ const Button: React.FC<ButtonType> = ({ text, route, variant, icon: Icon }) => {
   }, [navigate, route]);
 
   const baseClasses =
-    "w-full text-center p-2.5 lg:py-[15px] lg:px-5 border-none rounded-3xl h-full flex items-center justify-center";
+    "w-full text-center p-2.5 lg:py-[13px] lg:px-5 border-none rounded-3xl h-full flex items-center justify-center";
 
   const variantClasses = {
     orange: "text-body bg-secondary",
