@@ -19,8 +19,8 @@ const NotFound: React.FC = () => {
               <p className="text-xxxl lg:text-[80px] lg:leading-[80px] text-white">
                 Wygląda na to, że się zgubiłeś...
               </p>
-
-              <div className="w-full lg:flex lg:w-[200px]">
+              {/* Button for bigger screens */}
+              <div className="hidden lg:flex lg:w-[200px]">
                 <Button variant={"orange"} text={"Strona Główna"} route={"/"} />
               </div>
             </div>
@@ -31,6 +31,11 @@ const NotFound: React.FC = () => {
                 alt="Not Found"
                 className="max-w-full h-auto"
               />
+            </div>
+
+            {/* Button for smaller screens */}
+            <div className="lg:hidden w-full">
+              <Button variant={"orange"} text={"Strona Główna"} route={"/"} />
             </div>
           </div>
         </div>
