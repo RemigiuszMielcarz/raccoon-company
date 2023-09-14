@@ -50,9 +50,8 @@ const IntroSection: React.FC = () => {
   return (
     <section className="container lg:px-0">
       <div
-        className="container relative flex items-center bg-cover lg:bg-contain rounded-[8px] lg:rounded-none"
+        className="container relative flex items-center bg-cover lg:bg-contain rounded-[8px] lg:rounded-none lg:h-[860px] h-[calc(100vh-16px)]"
         style={{
-          height: "860px",
           backgroundImage: `url(${process.env.PUBLIC_URL}/images/backgrounds/home.png)`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
