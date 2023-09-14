@@ -17,6 +17,7 @@ import WojciechSignature from "../../images/icons/wojciech-smola-sig.webp";
 import { projects } from "../../contstants";
 import styles from "../../scss/dropdown.module.scss";
 import Divider from "../Divider";
+import { Link } from "react-router-dom";
 
 const useWindowWidth = () => {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -232,9 +233,9 @@ const Footer: React.FC = () => {
             </div>
             <div className="flex flex-col lg:flex-row gap-4">
               {resources.map((resource, index) => (
-                <a key={index} href={resource.route}>
+                <Link key={index} to={resource.route}>
                   {resource.name}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
